@@ -24,9 +24,31 @@ This directory contains all available Claude skills for product workflows.
 
 ---
 
+### write-feature-request
+**Purpose**: Guided authoring of structured Feature Requests with auto-generated Acceptance Criteria
+
+**When to use**:
+- When turning a customer problem or product idea into a full FR
+- To ensure every requirement has at least one testable AC before engineering picks it up
+- During discovery and scoping to surface open questions and risks early
+- To produce a handoff-ready doc with a built-in QA checklist
+
+**Key features**:
+- Interactive multi-phase conversation (problem → solution → outcomes → requirements)
+- Auto-generates ACs for every requirement and blocks on missing information
+- Classifies requirements as Functional or Non-Functional (with sub-type)
+- Surfaces open questions and risks automatically
+- Returns a complete, structured Markdown FR ready for sharing
+
+**Location**: `write-feature-request/SKILL.md`
+
+---
+
 ## Planned Skills
 
 Additional skills are in development. This section will be updated as new skills are added to the repository.
+
+---
 
 ## Installation
 

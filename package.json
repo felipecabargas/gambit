@@ -31,6 +31,14 @@
       "path": "skills/verify-acceptance-criteria",
       "version": "1.0.0",
       "status": "stable"
+    },
+    {
+      "id": "write-feature-request",
+      "name": "Write Feature Request",
+      "description": "Guided FR authoring with auto-generated Acceptance Criteria, open questions, and risks",
+      "path": "skills/write-feature-request",
+      "version": "1.0.0",
+      "status": "stable"
     }
   ],
   "directories": {
