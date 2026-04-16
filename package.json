@@ -1,0 +1,47 @@
+{
+  "name": "product-skills",
+  "version": "1.0.0",
+  "description": "A collection of Claude skills for product management workflows",
+  "main": "README.md",
+  "keywords": [
+    "product-management",
+    "acceptance-criteria",
+    "requirements",
+    "specifications",
+    "quality-assurance",
+    "user-stories",
+    "skills",
+    "claude"
+  ],
+  "author": "Product Skills Contributors",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/[organization]/product-skills"
+  },
+  "bugs": {
+    "url": "https://github.com/[organization]/product-skills/issues"
+  },
+  "homepage": "https://github.com/[organization]/product-skills#readme",
+  "skills": [
+    {
+      "id": "verify-acceptance-criteria",
+      "name": "Verify Acceptance Criteria",
+      "description": "Evaluate acceptance criteria quality and identify gaps",
+      "path": "skills/verify-acceptance-criteria",
+      "version": "1.0.0",
+      "status": "stable"
+    }
+  ],
+  "directories": {
+    "doc": "docs",
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "echo \"Linting documentation...\"",
+    "docs": "echo \"Building documentation...\""
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
