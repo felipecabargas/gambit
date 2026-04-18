@@ -39,6 +39,14 @@
       "path": "skills/write-feature-request",
       "version": "1.0.0",
       "status": "stable"
+    },
+    {
+      "id": "write-product-strategy",
+      "name": "Write Product Strategy",
+      "description": "Generate comprehensive product strategy documents aligned with business goals",
+      "path": "skills/write-product-strategy",
+      "version": "1.0.0",
+      "status": "stable"
     }
   ],
   "directories": {

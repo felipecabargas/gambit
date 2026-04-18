@@ -92,7 +92,7 @@ Product skills use evaluation frameworks to assess quality. Each framework:
 3. **Provides Scoring** - Quantitative feedback for tracking improvement
 4. **Suggests Improvements** - Moves beyond "this is wrong" to "here's better"
 
-### Example: Acceptance Criteria Framework
+### Example: verify-acceptance-criteria Framework
 
 **Dimensions:**
 - Clarity & Conciseness
@@ -110,28 +110,65 @@ Product skills use evaluation frameworks to assess quality. Each framework:
 - Pass threshold: 80+
 - Actionable feedback: Specific issues and rewrites
 
+### Example: write-feature-request Framework
+
+**AC Quality Gate:**
+- Blocker — requirement too vague to generate any AC; skill pauses and asks targeted follow-ups
+- Warning — AC can be written with assumptions; assumptions surfaced in Open Questions
+- Pass — AC is specific, testable, outcome-focused, and measurable
+
+**Requirement Types:**
+- Functional, Performance, Security, Accessibility, Reliability, Scalability, Usability, Compliance
+
+**Minimum gate:** Every requirement must have at least one Pass AC before the FR is assembled.
+
+### Example: write-product-strategy Framework
+
+**Required inputs:**
+- Target audience
+- Core problem(s) grounded in research
+- At least 3 strategic pillars (each tied to evidence)
+- Primary success metric
+
+**Assumption tracking:**
+- Each assumption classified as Validated or Speculative
+- Risk if wrong stated explicitly
+
+**Output scope:** ~2,000–3,500 words covering executive summary, market context, strategic reasoning, pillars, governance, roadmap horizons, KPIs, and assumptions.
+
 ## Integration Patterns
 
 Skills are designed to integrate with common workflows:
 
-### 1. Document Review Workflow
+### 1. End-to-End Product Workflow
 ```
-Write criteria → Evaluate with skill → Discuss findings → Revise → Re-evaluate
+write-product-strategy → write-feature-request → verify-acceptance-criteria
+```
+Start with strategic direction, translate into a spec, validate criteria before engineering handoff.
+
+### 2. Document Review Workflow
+```
+Write criteria → verify-acceptance-criteria → Discuss findings → Revise → Re-evaluate
 ```
 
-### 2. Team Handoff Workflow
+### 3. Team Handoff Workflow
 ```
-Finalize criteria → Evaluate with skill → Attach report to ticket → Engineer reviews
-```
-
-### 3. Quality Audit Workflow
-```
-Collect existing criteria → Evaluate all with skill → Analyze patterns → Implement improvements
+write-feature-request → verify-acceptance-criteria → Attach report to ticket → Engineer reviews
 ```
 
-### 4. Tool Integration Workflow
+### 4. Quality Audit Workflow
 ```
-Export criteria as JSON → Use skill → Import report → Integrate with project management tool
+Collect existing criteria → verify-acceptance-criteria → Analyze patterns → Implement improvements
+```
+
+### 5. Strategy Refresh Workflow
+```
+Existing STRATEGY.md + new research → write-product-strategy → Updated STRATEGY.md
+```
+
+### 6. Tool Integration Workflow
+```
+Export criteria as JSON → verify-acceptance-criteria → Import report → Integrate with project management tool
 ```
 
 ## Extensibility
@@ -203,34 +240,62 @@ See `contributing.md` for detailed guidelines.
 
 ## Philosophy in Practice
 
-### Example: Acceptance Criteria Skill
-
-The acceptance criteria skill embodies these principles:
+### verify-acceptance-criteria
 
 **Clarity Over Completeness**
-- Reports the top issues, not exhaustive analysis
-- Focuses on severity to guide prioritization
+- Reports top issues, not exhaustive analysis
+- Severity focus guides prioritization
 
 **Structured Output**
-- JSON reports that can be imported into tools
-- Clear dimension/issue mapping for understanding
+- JSON reports importable into tools
+- Clear dimension/issue mapping
 
 **Multiple Input Formats**
-- Plain text lists
-- Gherkin format
-- CSV/Excel files
-- Mixed inputs
+- Plain text, Gherkin, CSV/Excel, mixed
 
 **Severity-Based**
-- Critical issues = testing blockage
-- Major issues = ambiguity for implementation
-- Minor issues = polishing opportunities
+- Critical = testing blockage
+- Major = ambiguity for implementation
+- Minor = polishing opportunities
 
 **Actionable Recommendations**
 - Every issue includes a rewritten example
-- Specific guidance on what to change
 
-This combination makes the skill valuable for teams at any maturity level, from those just starting with structured requirements to organizations with sophisticated processes.
+### write-feature-request
+
+**Clarity Over Completeness**
+- Guided questions extract only what's needed — no bloated templates
+- AC quality gate enforces specificity before assembling the FR
+
+**Structured Output**
+- Markdown FR with nested AC tables, open questions, and risks
+- AC table usable directly as a QA checklist
+
+**Iterative Improvement**
+- Blockers surface missing information precisely
+- Any single requirement's ACs can be reworked in isolation
+
+**Actionable Recommendations**
+- Open questions flag assumptions requiring stakeholder alignment
+- Risk table includes likelihood, impact, and mitigations
+
+### write-product-strategy
+
+**Transparency Over Assertion**
+- Every strategic pillar linked to specific research evidence
+- Assumptions labeled validated vs. speculative
+
+**Structured Output**
+- STRATEGY.md saved to project directory
+- 7-section format covering context → pillars → roadmap → metrics → assumptions
+
+**Supports Decision-Making**
+- Research evidence explicitly connected to strategic choices
+- "How We Got Here" section makes reasoning auditable
+
+**Integrates with Workflows**
+- Scans existing project docs before asking questions
+- Updates only changed sections when refreshing existing strategy
 
 ## Future Directions
 

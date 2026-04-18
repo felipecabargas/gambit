@@ -11,7 +11,12 @@ This repository contains reusable Claude skills that enhance productivity across
 ### verify-acceptance-criteria
 Evaluate acceptance criteria quality against five key dimensions: clarity, testability, outcome-focus, measurability, and independence. Identifies gaps, scores severity levels, and generates improved versions of weak criteria.
 
-See `/skills/verify-acceptance-criteria/SKILL.md` for detailed documentation.
+
+### write-feature-request
+Guided Feature Request (FR) authoring. Assists in writing high-quality FRs by collecting structured inputs (problem, solution, outcomes, requirements) and auto-generating Acceptance Criteria for every requirement.
+
+### write-product-strategy
+Generate comprehensive product strategy documents aligned with business goals. Helps clarify strategic direction, align teams on "where to play and how to win," and create a document that bridges vision and execution.
 
 ## Quick Start
 
@@ -27,9 +32,9 @@ See `/skills/verify-acceptance-criteria/SKILL.md` for detailed documentation.
 ├── LICENSE                            # MIT License
 ├── .gitignore                         # Git ignore rules
 ├── skills/
-│   ├── verify-acceptance-criteria/
-│   │   └── SKILL.md                   # Skill documentation
-│   └── README.md                      # Skills index
+│   ├── verify-acceptance-criteria/        # Quality assurance for ACs
+│   ├── write-feature-request/             # Guided FR authoring
+│   └── write-product-strategy/           # Strategic planning & document generation
 ├── docs/
 │   ├── getting-started.md            # Installation & usage guide
 │   ├── skill-framework.md            # Framework & philosophy
@@ -56,9 +61,20 @@ cp -r skills/* ~/.claude/skills/
 
 Skills are automatically available in Claude once installed. Trigger them by describing what you need:
 
+**verify-acceptance-criteria:**
 - "Review these acceptance criteria and tell me if they're good"
 - "Verify that these ACs are testable"
-- "Improve our user story criteria"
+- "Rewrite these acceptance criteria to be clearer"
+
+**write-feature-request:**
+- "Write a feature request for [feature idea]"
+- "Turn this customer problem into a proper FR"
+- "Draft a feature specification with acceptance criteria for [idea]"
+
+**write-product-strategy:**
+- "Help me write a product strategy for [product]"
+- "Generate a STRATEGY.md for [context]"
+- "Update our existing product strategy"
 
 ## Contributing
 
