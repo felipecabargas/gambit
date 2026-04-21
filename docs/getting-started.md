@@ -40,6 +40,8 @@ write-feature-request/
 ├── SKILL.md
 write-product-strategy/
 ├── SKILL.md
+sprint-review/
+├── SKILL.md
 ```
 
 ### Step 4: Restart Claude
@@ -185,15 +187,54 @@ A `STRATEGY.md` saved to your project with:
 
 ---
 
+### Sprint Review Generator
+
+Turns a list of completed tickets or sprint data into a polished stakeholder report — ready to share with leadership in minutes.
+
+The skill operates with a **bias toward action**: it infers what it can (sprint goal, team name, groupings) and only asks when something truly critical is missing.
+
+**What You Get Back:**
+
+A `sprint-review-[sprint-name].md` saved to your workspace with:
+- Executive summary (3 sentences max — built for the 90-second reader)
+- Sprint goal and outcome (hit / partially hit / missed)
+- Highlights & wins with concrete numbers, not vague adjectives
+- Completed work grouped by theme
+- Risks, blockers, and carry-over tickets
+- Sprint metrics table (completion rate, ticket count, story points if tracked)
+- Looking ahead (skipped if there's nothing concrete to say)
+
+**Data sources accepted:**
+- Plain list of ticket titles or IDs
+- JIRA sprint name/ID (via Atlassian MCP if connected)
+- GitHub repo + date range (merged PRs / closed issues)
+- A paragraph description of what shipped
+
+**Trigger phrases:**
+- "Write my sprint review for Sprint 42"
+- "Summarize what we shipped this sprint"
+- "Generate a sprint recap for [team] stakeholders"
+- "Create a sprint report from these tickets"
+- "Help me write up our iteration for leadership"
+
+**Pro tips:**
+- Paste ticket titles even if they're rough — the skill groups and rewrites them
+- If you have before/after metrics anywhere in your tickets, include them; the skill will lead with numbers
+- Story points are optional — the report works fine without them
+- For JIRA-connected sessions, just provide the sprint name and the skill fetches completed issues automatically
+
+---
+
 ## Common Workflows
 
 ### From Strategy to Shipped Feature
 
-Use all three skills in sequence:
+Use all four skills in sequence:
 
 1. **write-product-strategy** → Define where to play and how to win
 2. **write-feature-request** → Translate a strategic bet into a spec with requirements
 3. **verify-acceptance-criteria** → Validate the ACs before handing off to engineering
+4. **sprint-review** → Recap what shipped and communicate outcomes to stakeholders
 
 ### Pre-Development Review
 

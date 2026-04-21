@@ -11,12 +11,14 @@ This repository contains reusable Claude skills that enhance productivity across
 ### verify-acceptance-criteria
 Evaluate acceptance criteria quality against five key dimensions: clarity, testability, outcome-focus, measurability, and independence. Identifies gaps, scores severity levels, and generates improved versions of weak criteria.
 
-
 ### write-feature-request
 Guided Feature Request (FR) authoring. Assists in writing high-quality FRs by collecting structured inputs (problem, solution, outcomes, requirements) and auto-generating Acceptance Criteria for every requirement.
 
 ### write-product-strategy
 Generate comprehensive product strategy documents aligned with business goals. Helps clarify strategic direction, align teams on "where to play and how to win," and create a document that bridges vision and execution.
+
+### sprint-review
+Turn a list of completed tickets or sprint data into a polished stakeholder report. Connects directly to JIRA or GitHub when available, groups work by theme, surfaces concrete impact metrics, and outputs a clean Markdown document ready to share with leadership.
 
 ## Quick Start
 
@@ -34,7 +36,8 @@ Generate comprehensive product strategy documents aligned with business goals. H
 ├── skills/
 │   ├── verify-acceptance-criteria/        # Quality assurance for ACs
 │   ├── write-feature-request/             # Guided FR authoring
-│   └── write-product-strategy/           # Strategic planning & document generation
+│   ├── write-product-strategy/           # Strategic planning & document generation
+│   └── sprint-review/                    # Sprint recap & stakeholder reports
 ├── docs/
 │   ├── getting-started.md            # Installation & usage guide
 │   ├── skill-framework.md            # Framework & philosophy
@@ -75,6 +78,11 @@ Skills are automatically available in Claude once installed. Trigger them by des
 - "Help me write a product strategy for [product]"
 - "Generate a STRATEGY.md for [context]"
 - "Update our existing product strategy"
+
+**sprint-review:**
+- "Write my sprint review for Sprint 42"
+- "Summarize what we shipped this sprint"
+- "Generate a sprint recap for stakeholders"
 
 ## Contributing
 
