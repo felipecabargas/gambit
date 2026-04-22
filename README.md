@@ -1,10 +1,10 @@
 # Product Skills Repository
 
-A collection of Claude skills designed to streamline product management workflows, from acceptance criteria verification to feature specification and strategic analysis.
+A collection of skills designed to streamline product management workflows, from acceptance criteria verification to feature specification and strategic analysis.
 
 ## Overview
 
-This repository contains reusable Claude skills that enhance productivity across product management, requirements definition, and quality assurance teams. Each skill is standalone but designed to work together in a comprehensive product workflow.
+This repository contains reusable skills that enhance productivity across product management, requirements definition, and quality assurance teams. Each skill is standalone but designed to work together in a comprehensive product workflow.
 
 ## Skills Included
 
@@ -18,7 +18,7 @@ Guided Feature Request (FR) authoring. Assists in writing high-quality FRs by co
 ### write-product-strategy
 Generate comprehensive product strategy documents aligned with business goals. Helps clarify strategic direction, align teams on "where to play and how to win," and create a document that bridges vision and execution.
 
-## Quick Start
+## Quick Start (for Claude)
 
 1. Install skills to your Claude environment: `~/.claude/skills/`
 2. Reference the `getting-started.md` guide in `/docs`
