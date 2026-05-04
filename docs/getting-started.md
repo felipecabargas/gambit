@@ -16,6 +16,13 @@ That's it. Skills are immediately available as model-invoked skills and slash co
 
 Use this if you are not using Claude Code or prefer manual control.
 
+First, clone this repository:
+
+```bash
+git clone https://github.com/felipecabargas/product-skills.git
+cd product-skills
+```
+
 **Step 1: Locate your Claude skills directory**
 
 The default location is `~/.claude/skills/`. Create it if it doesn't exist:
