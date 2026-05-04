@@ -27,7 +27,7 @@ Turn a list of completed tickets or sprint data into a polished stakeholder repo
 claude plugin install github:felipecabargas/product-skills
 ```
 
-Or see [Manual Installation](#installation) below for non-Claude environments.
+Or see [Installation](#installation) below for non-Claude environments.
 
 ## Directory Structure
 
