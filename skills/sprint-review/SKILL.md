@@ -2,6 +2,9 @@
 name: sprint-review
 description: >
   Generate a professional sprint review report for stakeholders — PMs, leadership, and cross-functional teams. Use this skill whenever a user wants to write up a sprint, summarize what the team shipped, produce a sprint retrospective document, recap what was completed in an iteration, or create a sprint summary for leadership. Triggers include: "write my sprint review", "generate a sprint recap", "create a sprint report", "summarize what we shipped this sprint", "help me write up our sprint for stakeholders", or any mention of sprint outcomes, velocity reports, or iteration summaries — even if they don't use the word "skill" or "report". Also trigger when a user pastes a list of tickets/tasks and asks for a write-up or summary.
+version: 1.0.0
+argument-hint: "[sprint name or number]"
+allowed-tools: [Read, Write, Bash]
 ---
 
 # Sprint Review Generator
