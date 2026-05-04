@@ -4,17 +4,27 @@ This guide walks you through installing and using the product skills in your Cla
 
 ## Installation
 
-### Step 1: Locate Your Claude Skills Directory
+### Option A: Claude Plugin (recommended)
 
-The default location for Claude skills is `~/.claude/skills/`. If this directory doesn't exist, create it:
+```bash
+claude plugin install github:felipecabargas/product-skills
+```
+
+That's it. Skills are immediately available as model-invoked skills and slash commands. No restart required.
+
+### Option B: Manual Install (non-Claude environments)
+
+Use this if you are not using Claude Code or prefer manual control.
+
+**Step 1: Locate your Claude skills directory**
+
+The default location is `~/.claude/skills/`. Create it if it doesn't exist:
 
 ```bash
 mkdir -p ~/.claude/skills
 ```
 
-### Step 2: Copy Skills to Your Environment
-
-Clone or download this repository, then copy the skills:
+**Step 2: Copy skills**
 
 ```bash
 # Copy individual skill
@@ -24,9 +34,7 @@ cp -r product-skills/skills/verify-acceptance-criteria/ ~/.claude/skills/
 cp -r product-skills/skills/* ~/.claude/skills/
 ```
 
-### Step 3: Verify Installation
-
-After copying, verify the installation:
+**Step 3: Verify installation**
 
 ```bash
 ls -la ~/.claude/skills/
@@ -44,9 +52,9 @@ sprint-review/
 ├── SKILL.md
 ```
 
-### Step 4: Restart Claude
+**Step 4: Restart Claude**
 
-Restart Claude Code to load the newly installed skills. They will be automatically available in your next session.
+Restart Claude Code to load the newly installed skills.
 
 ---
 
