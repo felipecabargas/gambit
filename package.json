@@ -2,62 +2,9 @@
   "name": "product-skills",
   "version": "1.0.0",
   "description": "A collection of Claude skills for product management workflows",
-  "main": "README.md",
-  "keywords": [
-    "product-management",
-    "acceptance-criteria",
-    "requirements",
-    "specifications",
-    "quality-assurance",
-    "user-stories",
-    "skills",
-    "claude"
-  ],
-  "author": "Product Skills Contributors",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/[organization]/product-skills"
-  },
-  "bugs": {
-    "url": "https://github.com/[organization]/product-skills/issues"
-  },
-  "homepage": "https://github.com/[organization]/product-skills#readme",
-  "skills": [
-    {
-      "id": "verify-acceptance-criteria",
-      "name": "Verify Acceptance Criteria",
-      "description": "Evaluate acceptance criteria quality and identify gaps",
-      "path": "skills/verify-acceptance-criteria",
-      "version": "1.0.0",
-      "status": "stable"
-    },
-    {
-      "id": "write-feature-request",
-      "name": "Write Feature Request",
-      "description": "Guided FR authoring with auto-generated Acceptance Criteria, open questions, and risks",
-      "path": "skills/write-feature-request",
-      "version": "1.0.0",
-      "status": "stable"
-    },
-    {
-      "id": "write-product-strategy",
-      "name": "Write Product Strategy",
-      "description": "Generate comprehensive product strategy documents aligned with business goals",
-      "path": "skills/write-product-strategy",
-      "version": "1.0.0",
-      "status": "stable"
-    }
-  ],
-  "directories": {
-    "doc": "docs",
-    "example": "examples"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "echo \"Linting documentation...\"",
-    "docs": "echo \"Building documentation...\""
-  },
-  "dependencies": {},
-  "devDependencies": {}
+    "url": "git+https://github.com/felipecabargas/product-skills.git"
+  }
 }
