@@ -22,9 +22,12 @@ Turn a list of completed tickets or sprint data into a polished stakeholder repo
 
 ## Quick Start
 
-1. Install skills to your Claude environment: `~/.claude/skills/`
-2. Reference the `getting-started.md` guide in `/docs`
-3. Review example evaluations in `/examples`
+```bash
+# Claude plugin install (recommended)
+claude plugin install github:felipecabargas/product-skills
+```
+
+Or see [Manual Installation](#installation) below for non-Claude environments.
 
 ## Directory Structure
 
@@ -50,7 +53,15 @@ Turn a list of completed tickets or sprint data into a polished stakeholder repo
 
 ## Installation
 
-Copy skill files to your Claude Code skills directory:
+### Claude Plugin (recommended)
+
+```bash
+claude plugin install github:felipecabargas/product-skills
+```
+
+Skills are immediately available as both model-invoked skills and slash commands (`/sprint-review`, `/verify-acceptance-criteria`, etc.).
+
+### Manual Install (non-Claude environments)
 
 ```bash
 # Copy individual skills
