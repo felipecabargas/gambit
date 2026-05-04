@@ -4,6 +4,9 @@ description: |
   Guided Feature Request (FR) authoring. Assists the user in writing a high-quality FR by collecting structured inputs (problem, solution, outcomes, requirements), then auto-generates Acceptance Criteria for every requirement. If any AC cannot be written due to missing information, the skill identifies the gaps and prompts the user. Returns a polished FR in Markdown with nested ACs, open questions, and risks.
 
   Use this skill whenever a user needs to author or improve a feature request. Trigger on: "write a feature request", "help me write an FR", "create a feature spec", "draft a feature proposal", "I want to define a new feature", "turn this idea into a feature request", or similar requests.
+version: 1.0.0
+argument-hint: "[feature idea or problem]"
+allowed-tools: [Read, Write, Bash]
 ---
 
 # Feature Request Author
