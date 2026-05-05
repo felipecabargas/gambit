@@ -1,4 +1,4 @@
-# gambit
+# Gambit
 
 Provides four product management skills, available both as model-invoked skills and slash commands.
 
