@@ -6,7 +6,7 @@
   "plugins": [
     {
       "name": "gambit",
-      "source": ".",
+      "source": "./",
       "description": "Twelve product management skills and four chained workflow agents for PM workflows",
       "version": "2.0.0",
       "author": {
