@@ -1,4 +1,4 @@
-# Product Skills Repository
+# Gambit
 
 A collection of Claude skills designed to streamline product management workflows, from acceptance criteria verification to feature specification and strategic analysis.
 
@@ -24,7 +24,7 @@ Turn a list of completed tickets or sprint data into a polished stakeholder repo
 
 ```bash
 # Claude plugin install (recommended)
-claude plugin install github:felipecabargas/product-skills
+claude plugin install github:felipecabargas/gambit
 ```
 
 Or see [Installation](#installation) below for non-Claude environments.
@@ -56,10 +56,10 @@ Or see [Installation](#installation) below for non-Claude environments.
 ### Claude Plugin (recommended)
 
 ```bash
-claude plugin install github:felipecabargas/product-skills
+claude plugin install github:felipecabargas/gambit
 ```
 
-Skills are immediately available as both model-invoked skills and slash commands (`/sprint-review`, `/verify-acceptance-criteria`, etc.).
+Skills are immediately available as both model-invoked skills and slash commands (`/gambit:sprint-review`, `/gambit:verify-acceptance-criteria`, etc.).
 
 ### Manual Install (non-Claude environments)
 
