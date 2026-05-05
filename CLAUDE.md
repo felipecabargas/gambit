@@ -1,6 +1,6 @@
 # Gambit
 
-Provides twelve product management skills and four chained workflow agents, available both as model-invoked skills and slash commands.
+Provides thirteen product management skills and four chained workflow agents, available both as model-invoked skills and slash commands.
 
 ## Available Skills
 
@@ -9,6 +9,7 @@ Provides twelve product management skills and four chained workflow agents, avai
 - **write-feature-request** (`/gambit:write-feature-request`) — guided FR authoring with auto-generated ACs
 - **write-product-strategy** (`/gambit:write-product-strategy`) — generate product strategy documents
 - **sprint-review** (`/gambit:sprint-review`) — turn sprint data into stakeholder-ready reports
+- **prioritize** (`/gambit:prioritize`) — score and rank features or initiatives using RICE, ICE, or MoSCoW
 
 ### Discovery
 - **synthesize-user-research** (`/gambit:synthesize-user-research`) — synthesize raw research into structured themes, pain points, and jobs-to-be-done

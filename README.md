@@ -26,6 +26,9 @@ Generate comprehensive product strategy documents aligned with business goals. H
 #### sprint-review
 Turn a list of completed tickets or sprint data into a polished stakeholder report. Connects directly to JIRA or GitHub when available, groups work by theme, surfaces concrete impact metrics, and outputs a clean Markdown document ready to share with leadership.
 
+#### prioritize
+Score and rank features or initiatives using RICE (default), ICE, or MoSCoW. Scans your existing strategy and OKRs to ground Impact scores in what the team is actually optimizing for. Accepts a pasted list, FR filenames, or a mix of both. Saves a dated prioritization file to your project.
+
 ### Discovery
 
 #### synthesize-user-research
@@ -97,6 +100,7 @@ Or see [Installation](#installation) below for non-Claude environments.
 │   ├── plugin.json                        # Plugin manifest
 │   └── marketplace.json                   # Marketplace catalog
 ├── skills/
+│   ├── prioritize/                        # RICE/ICE/MoSCoW feature prioritization
 │   ├── verify-acceptance-criteria/        # Quality assurance for ACs
 │   ├── write-feature-request/             # Guided FR authoring
 │   ├── write-product-strategy/            # Strategic planning & document generation
@@ -184,6 +188,12 @@ Skills are automatically available in Claude once installed. Trigger them by des
 - "Generate OKRs from our product strategy"
 - "Turn these strategy pillars into Objectives and Key Results"
 - "Write Q3 OKRs based on this strategy document"
+
+**prioritize:**
+- "Rank these features by RICE score"
+- "Help me decide what to build next quarter"
+- "Score this backlog against our strategy"
+- "Prioritize these items using MoSCoW"
 
 ## Contributing
 
