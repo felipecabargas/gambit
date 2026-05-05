@@ -1,8 +1,8 @@
 ---
 name: prioritize
-description: "Score and rank a list of features or initiatives using RICE by default. Scans existing strategy and OKRs to ground Impact scores in what the team is actually optimizing for. Use when deciding what to build next, preparing for planning, or presenting a ranked backlog to stakeholders. Accepts a pasted list, FR filenames, or a mix of both. Supports RICE (default), ICE, and MoSCoW as alternative frameworks."
+description: "Score and rank a list of features or initiatives using RICE by default. Scans existing strategy and OKRs to ground Impact scores in what the team is actually optimizing for. Use when deciding what to build next, preparing for planning, or presenting a ranked backlog to stakeholders. Accepts a pasted list, FR filenames, or a mix of both. Supports RICE (default), Agentic RICE (for AI-delegated work), ICE, and MoSCoW as alternative frameworks."
 compatibility: "Requires filesystem access to project directory. Works best with a STRATEGY.md and Feature Request markdown docs."
-version: 1.0.0
+version: 1.1.0
 argument-hint: "[list of features or initiatives to rank]"
 allowed-tools: [Read, Write, Bash]
 ---
@@ -37,7 +37,9 @@ Accept items in any format — a numbered list, bullet points, ticket IDs, FR fi
 
 If the input is sparse (item name only, no context), ask for the missing inputs required to score that item rather than scoring blind.
 
-**If the user specifies a framework** (ICE, MoSCoW, custom), switch to it. See [Alternative Frameworks](#alternative-frameworks) below.
+**If the user specifies a framework** (Agentic RICE, ICE, MoSCoW, custom), switch to it. See [Alternative Frameworks](#alternative-frameworks) below.
+
+**If the user mentions agentic workflows, AI agents, or autonomous execution**, suggest Agentic RICE and explain the difference before proceeding.
 
 ## Phase 2: Score Each Item
 
@@ -64,6 +66,37 @@ Default framework is **RICE**. Score every item, then rank by RICE score descend
 - Impact: infer from strategic fit + user context, but show your reasoning.
 - Confidence: default to 80% (medium) if the user hasn't indicated uncertainty.
 
+### Agentic RICE Scoring
+
+Use when work is being delegated to AI coding agents with no human directly involved in implementation.
+
+The formula is identical — only the definition of Effort changes.
+
+**RICE Score = (Reach × Impact × Confidence) / Agentic Effort**
+
+**Agentic Effort** = the number of human touchpoints required before the agent can ship the ticket. Measured in interruptions, not time.
+
+| Agentic Effort | Meaning |
+|---------------|---------|
+| 0.5 | Fully autonomous — agent runs start to finish without human input |
+| 1 | One check-in — e.g. a review or a clarifying question before starting |
+| 2 | Two check-ins — e.g. clarification upfront + review before merge |
+| 3+ | Three or more — agent needs significant human guidance; essentially human-led |
+
+**How to estimate Agentic Effort** — work through these four questions per item:
+
+1. **Spec clarity**: Is the desired behavior fully defined, or will the agent need to interpret ambiguous requirements? Vague spec = more touchpoints.
+2. **Scope isolation**: How many systems or subsystems does this touch? Cross-cutting changes require more human coordination.
+3. **Verifiability**: Can the agent check its own work automatically (tests, linters, type checks)? No test coverage = human review required.
+4. **Decision autonomy**: Does execution require product judgment calls mid-flight (copy, edge case handling, UX tradeoffs)? Each decision = a touchpoint.
+
+Derive a touchpoint count from the answers. If all four are clean, Agentic Effort = 0.5. Each problematic factor adds roughly 0.5–1 touchpoint.
+
+**When to ask vs. infer:**
+- Spec clarity and decision autonomy: infer from the FR if one exists; ask if not.
+- Scope isolation and verifiability: ask the user — these require codebase knowledge the skill doesn't have.
+- Default to Agentic Effort = 1 if uncertain.
+
 ## Phase 3: Output
 
 Save the result as `prioritization-[YYYY-MM-DD].md` in the current directory. Present the ranked table inline and confirm the file was saved.
@@ -71,8 +104,8 @@ Save the result as `prioritization-[YYYY-MM-DD].md` in the current directory. Pr
 ```markdown
 # Prioritization — [Date]
 
-**Framework:** RICE  
-**Items scored:** [N]  
+**Framework:** RICE / Agentic RICE
+**Items scored:** [N]
 **Strategy alignment:** [pillar names if found, or "No strategy doc found"]
 
 ---
@@ -84,6 +117,8 @@ Save the result as `prioritization-[YYYY-MM-DD].md` in the current directory. Pr
 | 1 | [Item] | [R] | [I] | [C]% | [E] | [score] | [Pillar or —] |
 | 2 | ... | | | | | | |
 
+*Effort column = [person-months / human touchpoints] depending on framework used.*
+
 ---
 
 ## Scoring Rationale
@@ -92,7 +127,7 @@ Save the result as `prioritization-[YYYY-MM-DD].md` in the current directory. Pr
 - **Reach**: [estimate and source]
 - **Impact**: [score and why — reference strategy/OKRs if applicable]
 - **Confidence**: [% and reasoning]
-- **Effort**: [estimate and source]
+- **Effort**: [estimate — for Agentic RICE, list the four factors and their touchpoint contribution]
 - **Strategic fit**: [pillar alignment, or "No direct pillar match"]
 
 ---
@@ -139,3 +174,4 @@ If the user supplies their own scoring dimensions (e.g. "score by strategic valu
 - **Surface conflicts explicitly.** If a high-RICE item contradicts the stated strategy, say so rather than quietly ranking it lower.
 - **Don't average away disagreement.** If Reach is highly uncertain, keep Confidence low rather than picking a middle-ground Reach number.
 - **One framework per session.** Don't mix RICE and MoSCoW. If the user changes their mind mid-session, start a new ranking.
+- **Agentic Effort is not a quality judgment.** A high touchpoint count means the ticket isn't ready for autonomous execution yet — not that it's unimportant. Separate the prioritization decision from the delegation decision.
