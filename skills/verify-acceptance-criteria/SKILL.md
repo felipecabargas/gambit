@@ -4,6 +4,10 @@ description: |
   Verify acceptance criteria quality and identify gaps.
   
   Use this skill whenever you need to evaluate acceptance criteria (ACs) to ensure they meet quality standards. Trigger on: "review these ACs", "check if these acceptance criteria are good", "validate my user story criteria", "improve our acceptance criteria", "audit these requirements", "do these ACs pass review", or similar requests. Also use proactively when someone shares acceptance criteria that look hastily written or vague. The skill analyzes criteria against five key dimensions (clarity, testability, outcome-focus, measurability, independence), scores issues by severity (critical/major/minor), and generates a structured report. It can also rewrite poor criteria into better ones or convert them to user story format.
+compatibility: "Requires filesystem access to project directory. Works best with markdown and project context documents."
+version: 1.0.0
+argument-hint: "[paste ACs or describe feature]"
+allowed-tools: [Read, Write, Bash]
 ---
 
 # Acceptance Criteria Verifier

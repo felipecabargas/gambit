@@ -2,6 +2,9 @@
 name: write-product-strategy
 description: "Generate comprehensive product strategy documents aligned with business goals. Use this when defining or updating your product's strategic direction, aligning teams on where to play and how to win, or creating a STRATEGY.md that bridges vision and execution. Triggers include: clarifying product strategy, articulating competitive positioning, defining strategic pillars, creating alignment documents, or answering 'what are we betting on as a company?' This skill scans existing project docs (roadmaps, market research, competitive analyses) to inform strategy, then either creates a new STRATEGY.md or updates an existing one."
 compatibility: "Requires filesystem access to project directory. Works best with markdown and project context documents."
+version: 1.0.0
+argument-hint: "[product name or context]"
+allowed-tools: [Read, Write, Bash]
 ---
 
 # Product Strategy Generator

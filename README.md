@@ -1,4 +1,8 @@
-# Product Skills Repository
+# Gambit
+
+<p align="center">
+  <img src="assets/logo.png" alt="Gambit" width="320">
+</p>
 
 A collection of skills designed to streamline product management workflows, from acceptance criteria verification to feature specification and strategic analysis.
 
@@ -11,18 +15,23 @@ This repository contains reusable skills that enhance productivity across produc
 ### verify-acceptance-criteria
 Evaluate acceptance criteria quality against five key dimensions: clarity, testability, outcome-focus, measurability, and independence. Identifies gaps, scores severity levels, and generates improved versions of weak criteria.
 
-
 ### write-feature-request
 Guided Feature Request (FR) authoring. Assists in writing high-quality FRs by collecting structured inputs (problem, solution, outcomes, requirements) and auto-generating Acceptance Criteria for every requirement.
 
 ### write-product-strategy
 Generate comprehensive product strategy documents aligned with business goals. Helps clarify strategic direction, align teams on "where to play and how to win," and create a document that bridges vision and execution.
 
-## Quick Start (for Claude)
+### sprint-review
+Turn a list of completed tickets or sprint data into a polished stakeholder report. Connects directly to JIRA or GitHub when available, groups work by theme, surfaces concrete impact metrics, and outputs a clean Markdown document ready to share with leadership.
 
-1. Install skills to your Claude environment: `~/.claude/skills/`
-2. Reference the `getting-started.md` guide in `/docs`
-3. Review example evaluations in `/examples`
+## Quick Start
+
+```bash
+# Claude plugin install (recommended)
+claude plugin install github:felipecabargas/gambit
+```
+
+Or see [Installation](#installation) below for non-Claude environments.
 
 ## Directory Structure
 
@@ -34,7 +43,8 @@ Generate comprehensive product strategy documents aligned with business goals. H
 ├── skills/
 │   ├── verify-acceptance-criteria/        # Quality assurance for ACs
 │   ├── write-feature-request/             # Guided FR authoring
-│   └── write-product-strategy/           # Strategic planning & document generation
+│   ├── write-product-strategy/           # Strategic planning & document generation
+│   └── sprint-review/                    # Sprint recap & stakeholder reports
 ├── docs/
 │   ├── getting-started.md            # Installation & usage guide
 │   ├── skill-framework.md            # Framework & philosophy
@@ -47,7 +57,15 @@ Generate comprehensive product strategy documents aligned with business goals. H
 
 ## Installation
 
-Copy skill files to your Claude Code skills directory:
+### Claude Plugin (recommended)
+
+```bash
+claude plugin install github:felipecabargas/gambit
+```
+
+Skills are immediately available as both model-invoked skills and slash commands (`/gambit:sprint-review`, `/gambit:verify-acceptance-criteria`, etc.).
+
+### Manual Install (non-Claude environments)
 
 ```bash
 # Copy individual skills
@@ -75,6 +93,11 @@ Skills are automatically available in Claude once installed. Trigger them by des
 - "Help me write a product strategy for [product]"
 - "Generate a STRATEGY.md for [context]"
 - "Update our existing product strategy"
+
+**sprint-review:**
+- "Write my sprint review for Sprint 42"
+- "Summarize what we shipped this sprint"
+- "Generate a sprint recap for stakeholders"
 
 ## Contributing
 

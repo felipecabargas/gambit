@@ -1,4 +1,4 @@
-# Product Skills Framework
+# Gambit — Skill Framework
 
 This document explains the philosophy, design principles, and patterns that underlie all skills in this repository.
 
@@ -136,15 +136,35 @@ Product skills use evaluation frameworks to assess quality. Each framework:
 
 **Output scope:** ~2,000–3,500 words covering executive summary, market context, strategic reasoning, pillars, governance, roadmap horizons, KPIs, and assumptions.
 
+### Example: sprint-review Framework
+
+**Inference-first approach:**
+- Sprint goal inferred from ticket patterns if not stated (flagged to user)
+- Team name inferred from ticket prefixes (e.g., `CHK-` → Checkout team)
+- Work grouped into 3–6 themes automatically; user can override
+
+**Data sources (accepted in any format):**
+- Plain list of ticket titles or IDs
+- JIRA sprint via Atlassian MCP (fetches completed issues directly)
+- GitHub merged PRs / closed issues via date range
+- Paragraph description of what shipped
+
+**Quality gates:**
+- Highlights must cite concrete results, not adjectives ("eliminated the weekly crash" not "improved reliability")
+- Story points omitted entirely if not tracked — no fabricated numbers
+- Executive summary capped at 3 sentences
+
+**Output scope:** `sprint-review-[sprint-name].md` covering executive summary, sprint goal & outcome, highlights & wins, completed work by theme, risks & blockers, sprint metrics table, and looking ahead.
+
 ## Integration Patterns
 
 Skills are designed to integrate with common workflows:
 
 ### 1. End-to-End Product Workflow
 ```
-write-product-strategy → write-feature-request → verify-acceptance-criteria
+write-product-strategy → write-feature-request → verify-acceptance-criteria → sprint-review
 ```
-Start with strategic direction, translate into a spec, validate criteria before engineering handoff.
+Start with strategic direction, translate into a spec, validate criteria before engineering handoff, then close the loop with a stakeholder-ready recap of what shipped.
 
 ### 2. Document Review Workflow
 ```
@@ -166,7 +186,13 @@ Collect existing criteria → verify-acceptance-criteria → Analyze patterns �
 Existing STRATEGY.md + new research → write-product-strategy → Updated STRATEGY.md
 ```
 
-### 6. Tool Integration Workflow
+### 6. Sprint Retrospective Workflow
+```
+Completed sprint tickets / JIRA sprint / GitHub PRs → sprint-review → Stakeholder report
+```
+Paste a list, reference a sprint name, or connect a JIRA MCP — the skill infers goal and groupings, then produces a report leadership can read in 90 seconds.
+
+### 7. Tool Integration Workflow
 ```
 Export criteria as JSON → verify-acceptance-criteria → Import report → Integrate with project management tool
 ```
@@ -296,6 +322,28 @@ See `contributing.md` for detailed guidelines.
 **Integrates with Workflows**
 - Scans existing project docs before asking questions
 - Updates only changed sections when refreshing existing strategy
+
+### sprint-review
+
+**Clarity Over Completeness**
+- 3-sentence executive summary hard cap — built for the 90-second reader
+- Only highlights with concrete impact make it to the Highlights section
+
+**Bias Toward Action**
+- Infers sprint goal, team name, and groupings rather than blocking on questions
+- Flags all inferences transparently at the end of the message, not in the document
+
+**Structured Output**
+- Markdown report saved as `sprint-review-[sprint-name].md`
+- Fixed 7-section skeleton: executive summary → goal → highlights → completed work → risks → metrics → looking ahead
+
+**Multiple Input Formats**
+- Accepts plain lists, JIRA MCP, GitHub PRs, or prose — no reformatting required
+- Story points gracefully omitted when not available; no placeholders
+
+**Actionable and Honest**
+- Numbers over adjectives: concrete metrics cited wherever they exist in the source data
+- Risks stated factually with owner and expected resolution, never vague concern language
 
 ## Future Directions
 
