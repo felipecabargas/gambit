@@ -27,6 +27,20 @@ Use this skill to create high-quality, structured feature requests. It's most va
 
 The skill runs in a **multi-step conversation**. At each step it asks focused questions, evaluates the quality of your answers, and only proceeds when it has enough information to produce excellent output.
 
+**Before starting:** If the user's input reads as exploratory — vague problem description, no clear outcome defined, or language like *"I'm thinking about..."* or *"wondering if we should..."* — surface this before proceeding:
+
+> "If you're still exploring the problem space, `/superpowers:brainstorming` is a good first step — it sharpens the problem statement before we commit to a spec."
+
+If the user's input is specific and outcome-focused, skip the nudge and proceed directly.
+
+**Existing FR scan (silent):** Before asking questions, scan for related work:
+
+```bash
+find . -maxdepth 4 \( -name "FR-*.md" -o -name "feature-request-*.md" \) 2>/dev/null | head -10
+```
+
+If related FRs are found, surface them before proceeding: *"I found [N] existing feature requests that may be related — [titles]. Is this a new spec, or should we update one of these?"*
+
 ### Phase 1 — Information Gathering
 
 The skill collects four foundational inputs:
