@@ -40,3 +40,6 @@ build/
 
 # Git worktrees
 .worktrees/
+
+# Internal planning docs (kept local only)
+docs/superpowers/
