@@ -4,11 +4,11 @@
   <img src="assets/logo.png" alt="Gambit" width="320">
 </p>
 
-A collection of Claude skills designed to streamline product management workflows, from acceptance criteria verification to feature specification and strategic analysis.
+A collection of skills designed to streamline product management workflows, from acceptance criteria verification to feature specification and strategic analysis.
 
 ## Overview
 
-This repository contains reusable Claude skills that enhance productivity across product management, requirements definition, and quality assurance teams. Each skill is standalone but designed to work together in a comprehensive product workflow.
+This repository contains reusable skills that enhance productivity across product management, requirements definition, and quality assurance teams. Each skill is standalone but designed to work together in a comprehensive product workflow.
 
 ## Skills Included
 
