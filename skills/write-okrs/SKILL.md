@@ -60,6 +60,17 @@ If previous OKRs are provided, the skill uses them to set baselines for Key Resu
 
 The skill follows five steps to produce OKRs that are ambitious, measurable, and honest about confidence levels.
 
+### Step 0 — Scan for Strategy and Existing OKRs (silent)
+
+Before reading the user's strategy input, silently scan for source documents:
+
+```bash
+cat STRATEGY.md 2>/dev/null
+find . -maxdepth 2 -name "OKRs-*.md" 2>/dev/null | sort | xargs cat 2>/dev/null
+```
+
+If STRATEGY.md is found, use it as the primary source for Step 1 rather than asking the user to describe the strategy. If existing OKR files are found, surface them: *"I found existing OKRs — should I update these or draft a new set for a different period?"* Do not mention the scan.
+
 ### Step 1 — Read the Strategy and Identify 2–4 Distinct Pillars or Bets
 
 The skill reads the strategy document or input and identifies the 2–4 major strategic pillars. A pillar is a distinct area of focus that the strategy is betting on — not a feature, not a project, but a direction. If the input contains more than 4 pillars, the skill asks you to prioritise: *"You've listed 6 strategic areas. OKRs work best with 2–4 Objectives. Which of these are the top priorities for this quarter?"*
