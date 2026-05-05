@@ -98,6 +98,22 @@ If the filtered list is empty (e.g. a purely technical sprint), the skill output
 
 The skill follows four steps to produce release notes that are clear, accurate, and appropriately toned.
 
+### Step 0 — Scan Git History for Merged Work (silent)
+
+Before filtering tickets, check whether git history can provide the source data:
+
+```bash
+# Find last release tag
+LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null)
+echo "Last release: $LAST_TAG"
+# Merged PRs since last tag
+[ -n "$LAST_TAG" ] && git log --merges --oneline ${LAST_TAG}..HEAD 2>/dev/null | head -40
+# Fallback: last 4 weeks if no tags
+[ -z "$LAST_TAG" ] && git log --merges --oneline --since="4 weeks ago" 2>/dev/null | head -40
+```
+
+If the user hasn't provided a ticket list, use merge commit messages as the raw input and proceed to Step 1. If git history is empty or inaccessible, ask the user to paste the ticket list. Do not mention the scan.
+
 ### Step 1 — Filter to Customer-Visible Items Only
 
 The skill applies the filter rules above to every item in the input. Filtered-out items are listed in a separate section of the working output so the PM can review and override if needed. The final release notes document contains only items that passed the filter.
