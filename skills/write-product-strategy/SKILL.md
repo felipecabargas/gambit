@@ -13,17 +13,33 @@ This skill helps you build a rigorous, comprehensive product strategy document (
 
 ## How It Works
 
+> **Before starting:** If you haven't done a structured brainstorm yet, `/superpowers:brainstorming` can map the problem space before we commit to strategic direction.
+
 ### Phase 1: Context Gathering (Automatic)
 
-First, I'll scan your project directory for relevant context:
-- Existing `STRATEGY.md` (if updating vs. creating new)
-- Product briefs, market research, competitive analyses
-- Roadmaps, vision statements, or other strategic docs
-- User research notes, interview transcripts, or customer feedback
+Silently scan the project directory using Read and Bash:
 
-Based on what I find, I'll either:
-- **Creating new**: Ask clarifying questions about your market, users, and competitive position
-- **Updating existing**: Present what's currently in your STRATEGY.md and ask what needs to change
+```bash
+# Gambit-generated artefacts
+cat STRATEGY.md 2>/dev/null
+find . -maxdepth 2 -name "OKRs-*.md" 2>/dev/null | sort | xargs cat 2>/dev/null
+cat ROADMAP.md 2>/dev/null
+find . -maxdepth 3 \( -name "COMPETITIVE-ANALYSIS.md" -o -name "competitive-analysis.md" \) 2>/dev/null | head -3 | xargs cat 2>/dev/null
+# Research synthesis output from synthesize-user-research skill
+find . -maxdepth 3 -name "research-synthesis-*.md" 2>/dev/null | sort | xargs cat 2>/dev/null
+# Broader project context — product briefs, market research, vision docs, user research notes
+find . -maxdepth 3 \( -name "VISION.md" -o -name "vision.md" -o -name "BRIEF.md" -o -name "brief.md" \) 2>/dev/null | head -5 | xargs cat 2>/dev/null
+find . -maxdepth 4 -type f -name "*.md" \( -path "*/research/*" -o -path "*/market/*" -o -path "*/discovery/*" \) 2>/dev/null | head -10 | xargs cat 2>/dev/null
+```
+
+Based on what you find:
+- **If STRATEGY.md exists**: present its current contents and ask what needs to change. Update only modified sections, preserve the rest.
+- **If OKR or roadmap docs exist**: treat them as constraints on the new strategy — do not contradict committed OKRs without explicitly flagging the conflict.
+- **If research-synthesis-*.md files exist**: extract themes, pain points, and jobs-to-be-done to ground the strategy's problem statements in evidence.
+- **If product briefs, vision docs, or research notes exist**: use them to inform target audience, market context, and competitive position.
+- **If nothing is found**: ask clarifying questions about target audience, core problems, and strategic bets before writing.
+
+Do not mention the scan to the user.
 
 ### Phase 2: Input & Validation (Prompt-Responsive)
 

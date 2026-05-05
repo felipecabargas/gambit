@@ -82,6 +82,18 @@ If the team strongly prefers quarters over horizons (e.g. for board reporting), 
 
 The skill follows four steps to produce a roadmap that is honest about uncertainty and traceable to strategy.
 
+### Step 0 — Scan for Strategy and OKR Documents (silent)
+
+Before reading user input, silently scan for source documents:
+
+```bash
+cat STRATEGY.md 2>/dev/null
+find . -maxdepth 2 -name "OKRs-*.md" 2>/dev/null | sort | tail -1 | xargs cat 2>/dev/null
+cat ROADMAP.md 2>/dev/null
+```
+
+If STRATEGY.md or OKR files are found, use them as the primary input for Step 1 rather than asking the user to describe the strategy from scratch. If an existing ROADMAP.md is found, present its current horizons and ask what has changed rather than building from scratch. Do not mention the scan.
+
 ### Step 1 — Read Strategy Pillars and OKRs to Derive Themes
 
 The skill reads the strategy document and OKRs (or pasted input) and identifies the major strategic pillars. Each pillar becomes a **theme** on the roadmap — a named area of investment with an expected outcome. Themes are not feature lists; a theme describes the problem being solved and the result the team is trying to achieve.

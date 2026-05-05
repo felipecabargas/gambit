@@ -52,6 +52,23 @@ Focus areas: pricing model, API/integration depth, permissions model, mobile exp
 
 If no dimensions are specified, the skill defaults to the five standard dimensions (see Phase 1).
 
+## Phase 0: Scan Existing Artefacts (Automatic)
+
+Before scoping the analysis, silently scan for existing strategy and competitive analysis documents:
+
+```bash
+cat STRATEGY.md 2>/dev/null
+cat COMPETITIVE-ANALYSIS.md 2>/dev/null
+find . -maxdepth 3 -name "competitive-analysis.md" 2>/dev/null | head -3 | xargs cat 2>/dev/null
+```
+
+Based on what you find:
+- **If COMPETITIVE-ANALYSIS.md exists**: summarise what's already documented and ask whether to update the existing analysis or start fresh. If updating, carry forward existing players and dimensions as the baseline.
+- **If STRATEGY.md exists**: extract the strategic priorities that inform which competitive dimensions matter most for this context.
+- **If nothing is found**: proceed to Phase 1 as normal.
+
+Do not mention the scan to the user.
+
 ## Phase 1: Scope
 
 Before analysing competitors, the skill confirms which dimensions matter most for your context. It will ask:

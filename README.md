@@ -137,6 +137,10 @@ From within Claude Code, run:
 
 Then run `/reload-plugins` to activate. Skills are immediately available as both model-invoked skills and slash commands (`/gambit:sprint-review`, `/gambit:verify-acceptance-criteria`, etc.).
 
+### Optional: Superpowers
+
+Some skills surface suggestions for `/superpowers:brainstorming` (at the start of strategy and feature request workflows) and `/superpowers:requesting-code-review` (after writing a technical brief). These come from the [Superpowers plugin](https://github.com/obra/superpowers) — install it separately to use them. Gambit works fully without it.
+
 ### Manual Install (non-Claude environments)
 
 ```bash

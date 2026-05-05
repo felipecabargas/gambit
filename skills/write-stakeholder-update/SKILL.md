@@ -66,6 +66,23 @@ Freeform input is welcome. The skill will extract what it needs and ask for anyt
 
 The skill follows four steps to produce an update that leads with signal, backs it up with evidence, and makes any required leadership action explicit.
 
+### Step 0 — Scan for Prior Updates and Strategy Context (silent)
+
+Before determining the status signal, silently scan for context:
+
+```bash
+cat STRATEGY.md 2>/dev/null
+find . -maxdepth 2 -name "OKRs-*.md" 2>/dev/null | sort | tail -1 | xargs cat 2>/dev/null
+ls stakeholder-update-*.md 2>/dev/null | sort | tail -3 | xargs cat 2>/dev/null
+```
+
+Use any found artefacts to:
+- Pre-populate OKR progress from scanned OKR files
+- Reference prior update commitments (e.g. *"last update said X would ship by Y"*)
+- Anchor the status signal to concrete OKR evidence rather than relying solely on user description
+
+Do not mention the scan.
+
 ### Step 1 — Determine Status Signal from OKR Progress and Blockers
 
 The first line of the update is the status signal. Leadership should know the health of the product area before reading a single sentence of detail.

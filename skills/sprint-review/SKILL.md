@@ -27,6 +27,17 @@ Take stock of what the user provided:
   - If it's a plain list, use it as-is.
 - **Story points** — many teams don't track them. If they're not in the input, don't ask and don't invent them. The metrics section works fine without them.
 
+**Git history scan (automatic, if no ticket list provided):** If the user hasn't pasted tickets or mentioned a JIRA/GitHub source, silently run:
+
+```bash
+# Try sprint window from user input, fall back to last 2 weeks
+git log --merges --oneline --since="2 weeks ago" 2>/dev/null | head -40
+# Also try: since last tag
+LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null) && [ -n "$LAST_TAG" ] && git log --merges --oneline ${LAST_TAG}..HEAD 2>/dev/null | head -40
+```
+
+Use merge commit messages as the ticket list and proceed. Flag the source at the end of your message: *"Sprint data pulled from git history — let me know if anything is missing or should be excluded."*
+
 ## Step 2: Make sense of the work
 
 Before writing, do a quick internal analysis:
