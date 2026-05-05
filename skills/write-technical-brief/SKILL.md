@@ -60,6 +60,26 @@ If architecture context is provided, it is used to make the constraints and inte
 
 The skill follows five steps to transform a Feature Request into an engineering handoff document.
 
+### Step 0 — Scan Project for Architecture Context (silent)
+
+Before reading the FR, silently scan the project for context that will enrich the constraints and integration points sections:
+
+```bash
+# Architecture docs
+find . -maxdepth 3 \( -name "ARCHITECTURE.md" -o -name "architecture.md" -o -name "TECH-STACK.md" \) 2>/dev/null | head -5 | xargs cat 2>/dev/null
+find . -maxdepth 3 -type d \( -name "adr" -o -name "architecture" \) 2>/dev/null | head -3
+# Tech stack
+cat README.md 2>/dev/null | head -80
+cat package.json 2>/dev/null || cat Cargo.toml 2>/dev/null || cat go.mod 2>/dev/null
+```
+
+Use any found artefacts to:
+- Populate **technical constraints** with confirmed platform and framework details
+- Populate **integration points** with known existing systems
+- Mark constraints derived from scanned files as **Confirmed** (not Assumed)
+
+If nothing is found, continue from Step 1 as normal. Do not mention the scan to the user.
+
 ### Step 1 — Read the FR and Identify All Requirements and ACs
 
 The skill reads the full FR and extracts:
@@ -177,6 +197,12 @@ The following are explicitly excluded from this implementation. Do not design fo
 - [Item]
 - [Item]
 ```
+
+## After Producing the Brief
+
+Once the brief is saved, surface this to the user:
+
+> "To route this to engineering for review, `/superpowers:requesting-code-review` walks through the handoff."
 
 ## Key Rule
 
