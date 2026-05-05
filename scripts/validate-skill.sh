@@ -13,7 +13,7 @@ if [ ! -f "$SKILL_FILE" ]; then
 fi
 
 # Frontmatter must open and close with ---
-DELIMITERS=$(grep -c "^---$" "$SKILL_FILE" || true)
+DELIMITERS=$(grep -c "^---$" "$SKILL_FILE" 2>/dev/null || echo 0)
 if [ "$DELIMITERS" -lt 2 ]; then
   echo "ERROR: Missing frontmatter delimiters (---) in $SKILL_FILE"
   exit 1
@@ -29,7 +29,7 @@ done
 
 # Required body sections (skills)
 for section in "## When to Use" "## How" "## Output"; do
-  if ! grep -q "$section" "$SKILL_FILE"; then
+  if ! grep -qF "$section" "$SKILL_FILE"; then
     echo "WARNING: Expected section '$section' not found in $SKILL_FILE"
   fi
 done
