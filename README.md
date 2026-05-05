@@ -1,7 +1,7 @@
 # Gambit
 
 <p align="center">
-  <img src="assets/logo.png" alt="Gambit" width="320">
+  <img src="assets/logo.png" alt="Gambit" width="800">
 </p>
 
 A collection of skills designed to streamline product management workflows, from acceptance criteria verification to feature specification and strategic analysis.
