@@ -1,4 +1,4 @@
-# Product Skills Framework
+# Gambit — Skill Framework
 
 This document explains the philosophy, design principles, and patterns that underlie all skills in this repository.
 

@@ -1,4 +1,4 @@
-# Contributing to Product Skills
+# Contributing to Gambit
 
 We welcome contributions! This guide explains how to report issues, suggest improvements, and create new skills.
 
