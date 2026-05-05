@@ -1,4 +1,4 @@
-# Getting Started with Product Skills
+# Getting Started with Gambit
 
 This guide walks you through installing and using the product skills in your Claude environment.
 
@@ -7,7 +7,7 @@ This guide walks you through installing and using the product skills in your Cla
 ### Option A: Claude Plugin (recommended)
 
 ```bash
-claude plugin install github:felipecabargas/product-skills
+claude plugin install github:felipecabargas/gambit
 ```
 
 That's it. Skills are immediately available as model-invoked skills and slash commands. No restart required.
@@ -19,8 +19,8 @@ Use this if you are not using Claude Code or prefer manual control.
 First, clone this repository:
 
 ```bash
-git clone https://github.com/felipecabargas/product-skills.git
-cd product-skills
+git clone https://github.com/felipecabargas/gambit.git
+cd gambit
 ```
 
 **Step 1: Locate your Claude skills directory**
@@ -35,10 +35,10 @@ mkdir -p ~/.claude/skills
 
 ```bash
 # Copy individual skill
-cp -r product-skills/skills/verify-acceptance-criteria/ ~/.claude/skills/
+cp -r gambit/skills/verify-acceptance-criteria/ ~/.claude/skills/
 
 # Or copy all skills at once
-cp -r product-skills/skills/* ~/.claude/skills/
+cp -r gambit/skills/* ~/.claude/skills/
 ```
 
 **Step 3: Verify installation**
