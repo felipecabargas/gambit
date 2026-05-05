@@ -37,3 +37,6 @@ build/
 
 # Cache
 .cache/
+
+# Git worktrees
+.worktrees/

@@ -197,6 +197,30 @@ Paste a list, reference a sprint name, or connect a JIRA MCP — the skill infer
 Export criteria as JSON → verify-acceptance-criteria → Import report → Integrate with project management tool
 ```
 
+### 8. Research-to-Feature Workflow (Agent)
+```
+synthesize-user-research → build-user-persona → write-feature-request
+```
+Takes raw research artefacts and produces a complete Feature Request with persona context. Use the `discovery-to-fr` agent to run this as a single guided session.
+
+### 9. Feature-to-Dev-Ready Workflow (Agent)
+```
+write-feature-request → verify-acceptance-criteria → write-technical-brief
+```
+Takes a raw feature idea through authoring, AC quality verification, and engineering handoff in one flow. Use the `fr-to-ready` agent.
+
+### 10. Strategy-to-Roadmap Workflow (Agent)
+```
+write-product-strategy → write-okrs → write-roadmap
+```
+Takes product context through strategy, OKRs, and a horizon-based roadmap to produce three aligned artefacts. Use the `strategy-to-roadmap` agent.
+
+### 11. Sprint-to-Stakeholders Workflow (Agent)
+```
+sprint-review → write-release-notes → write-stakeholder-update
+```
+Takes sprint data and produces all three stakeholder artefacts — internal recap, customer-facing release notes, and leadership update — in a single session. Use the `sprint-to-stakeholders` agent.
+
 ## Extensibility
 
 Skills in this framework are designed to be extended:
@@ -354,6 +378,31 @@ As this skill collection grows, we envision:
 3. **Tool Ecosystem** - Integration with product management tools
 4. **Community Skills** - User-contributed specialized skills
 5. **Adaptive Learning** - Skills that improve based on team feedback
+
+## Agent Pattern
+
+Agents are chained workflow orchestrators that run multiple skills in sequence within a single session. They share the same `SKILL.md` format as standalone skills but live in the `agents/` directory.
+
+### What agents are
+
+An agent defines an ordered list of skills to execute. Rather than running each skill independently, the agent carries context forward from one step to the next — the output of step N becomes enriched input for step N+1. This produces artefacts that are internally consistent and cross-referenced.
+
+### Where they live
+
+Agents reside in `agents/<name>/SKILL.md`. The directory structure mirrors `skills/` exactly, and agents follow the same design pattern (When to Use, Input Format, Output Format, How It Works, How to Trigger).
+
+### Pause-point convention
+
+Agents pause for explicit user confirmation after each step before proceeding to the next. This gives the user a chance to review intermediate output, make corrections, or stop the workflow early. The agent surfaces a brief summary of what was produced and asks "Ready to continue to [next step]?" before moving on.
+
+### Current agents
+
+| Agent | Chain |
+|---|---|
+| `discovery-to-fr` | `synthesize-user-research → build-user-persona → write-feature-request` |
+| `fr-to-ready` | `write-feature-request → verify-acceptance-criteria → write-technical-brief` |
+| `strategy-to-roadmap` | `write-product-strategy → write-okrs → write-roadmap` |
+| `sprint-to-stakeholders` | `sprint-review → write-release-notes → write-stakeholder-update` |
 
 ## Questions?
 
