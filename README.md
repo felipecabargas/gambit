@@ -79,8 +79,9 @@ Takes sprint data and produces all three stakeholder artefacts in a single guide
 ## Quick Start
 
 ```bash
-# Claude plugin install (recommended)
-claude plugin install github:felipecabargas/gambit
+# Add the marketplace, then install the plugin
+/plugin marketplace add felipecabargas/gambit
+/plugin install gambit@felipecabargas-gambit
 ```
 
 Or see [Installation](#installation) below for non-Claude environments.
@@ -92,6 +93,9 @@ Or see [Installation](#installation) below for non-Claude environments.
 ├── README.md                              # This file
 ├── LICENSE                                # MIT License
 ├── .gitignore                             # Git ignore rules
+├── .claude-plugin/
+│   ├── plugin.json                        # Plugin manifest
+│   └── marketplace.json                   # Marketplace catalog
 ├── skills/
 │   ├── verify-acceptance-criteria/        # Quality assurance for ACs
 │   ├── write-feature-request/             # Guided FR authoring
@@ -124,11 +128,14 @@ Or see [Installation](#installation) below for non-Claude environments.
 
 ### Claude Plugin (recommended)
 
+From within Claude Code, run:
+
 ```bash
-claude plugin install github:felipecabargas/gambit
+/plugin marketplace add felipecabargas/gambit
+/plugin install gambit@felipecabargas-gambit
 ```
 
-Skills are immediately available as both model-invoked skills and slash commands (`/gambit:sprint-review`, `/gambit:verify-acceptance-criteria`, etc.).
+Then run `/reload-plugins` to activate. Skills are immediately available as both model-invoked skills and slash commands (`/gambit:sprint-review`, `/gambit:verify-acceptance-criteria`, etc.).
 
 ### Manual Install (non-Claude environments)
 

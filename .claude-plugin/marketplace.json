@@ -1,0 +1,17 @@
+{
+  "name": "felipecabargas-gambit",
+  "owner": {
+    "name": "A. Felipe Cabargas"
+  },
+  "plugins": [
+    {
+      "name": "gambit",
+      "source": ".",
+      "description": "Twelve product management skills and four chained workflow agents for PM workflows",
+      "version": "2.0.0",
+      "author": {
+        "name": "A. Felipe Cabargas"
+      }
+    }
+  ]
+}
