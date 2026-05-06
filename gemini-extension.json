@@ -1,0 +1,6 @@
+{
+  "name": "gambit",
+  "description": "Twelve product management skills and four chained workflow agents for PM workflows",
+  "version": "2.1.0",
+  "contextFileName": "GEMINI.md"
+}
