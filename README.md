@@ -119,8 +119,11 @@ Skills activate from natural language — just describe what you need. See [docs
 │   └── sprint-to-stakeholders/
 ├── docs/
 │   ├── getting-started.md
+│   ├── cowork.md                          # Terminal-free setup for non-technical PMs
 │   ├── skill-framework.md
 │   └── contributing.md
+├── examples/
+│   └── bionicle/                          # Real workflow outputs (sprint-to-stakeholders + strategy-to-roadmap)
 └── package.json
 ```
 
