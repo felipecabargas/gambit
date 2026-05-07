@@ -50,9 +50,9 @@ template and a required owner. We charge per workspace, not per seat.
 Focus areas: pricing model, API/integration depth, permissions model, mobile experience
 ```
 
-If no dimensions are specified, the skill defaults to the five standard dimensions (see Phase 1).
+If no dimensions are specified, the skill defaults to the five standard dimensions (see Step 1).
 
-## Phase 0: Scan Existing Artefacts (Automatic)
+## Step 0: Scan Existing Artefacts (Automatic)
 
 Before scoping the analysis, silently scan for existing strategy and competitive analysis documents:
 
@@ -65,11 +65,11 @@ find . -maxdepth 3 -name "competitive-analysis.md" 2>/dev/null | head -3 | xargs
 Based on what you find:
 - **If COMPETITIVE-ANALYSIS.md exists**: summarise what's already documented and ask whether to update the existing analysis or start fresh. If updating, carry forward existing players and dimensions as the baseline.
 - **If STRATEGY.md exists**: extract the strategic priorities that inform which competitive dimensions matter most for this context.
-- **If nothing is found**: proceed to Phase 1 as normal.
+- **If nothing is found**: proceed to Step 1 as normal.
 
 Do not mention the scan to the user.
 
-## Phase 1: Scope
+## Step 1: Scope
 
 Before analysing competitors, the skill confirms which dimensions matter most for your context. It will ask:
 
@@ -98,7 +98,7 @@ Before analysing competitors, the skill confirms which dimensions matter most fo
 
 If the user provides evaluation dimensions, those replace or extend the defaults. The analysis always evaluates every competitor on the same dimensions so the comparison matrix is valid.
 
-## Phase 2: Analysis
+## Step 2: Analysis
 
 For each competitor listed, the skill builds a structured profile.
 
@@ -112,7 +112,7 @@ Each profile covers:
 
 ### Capability Assessment
 
-For each dimension selected in Phase 1, the skill assesses each competitor on a three-point scale:
+For each dimension selected in Step 1, the skill assesses each competitor on a three-point scale:
 
 | Rating | Meaning |
 |---|---|
@@ -129,7 +129,7 @@ After the dimension assessment, each profile closes with:
 - **Top 2–3 strengths** — what this competitor does well enough to win deals or retain users
 - **Top 2–3 weaknesses** — where this competitor is most vulnerable or where customers most often complain
 
-## Phase 3: Synthesis
+## Step 3: Synthesis
 
 Once all competitor profiles are complete, the skill synthesises across the full landscape.
 
