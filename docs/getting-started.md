@@ -117,16 +117,19 @@ Reads your `STRATEGY.md` and OKRs to ground Impact scores in what the team is ac
 ```
 Synthesize these interview notes into themes and pain points
 ```
+Produces structured themes, pain points, jobs-to-be-done, and research gaps from raw inputs (interview notes, survey results, NPS verbatims, support tickets).
 
 **build-user-persona**
 ```
 Build a user persona from these research findings
 ```
+Creates a structured persona document with each attribute labeled as research-validated or inferred — no made-up archetypes.
 
 **competitive-analysis**
 ```
 Analyze our competitive landscape — here are the players we're tracking: [list]
 ```
+Outputs player profiles, a capability comparison matrix, whitespace opportunities, and strategic implications.
 
 ### Communication Skills
 
@@ -134,21 +137,25 @@ Analyze our competitive landscape — here are the players we're tracking: [list
 ```
 Generate Q3 OKRs based on this strategy document
 ```
+Derives Objectives and Key Results from strategy pillars, challenges vague KRs, and distinguishes outputs from outcomes.
 
 **write-roadmap**
 ```
 Create a Now/Next/Later roadmap from our strategy and OKRs
 ```
+Organises themes (not features) into horizons, marks items as committed vs. directional, and ties each to a strategy pillar.
 
 **write-release-notes**
 ```
 Turn these sprint tickets into customer-facing release notes
 ```
+Filters internal and infra work, rewrites ticket titles as user benefits, and groups by category (New / Improved / Fixed).
 
 **write-stakeholder-update**
 ```
 Write a leadership update for this week — here's our OKR status and what shipped
 ```
+Leads with a clear status signal (on track / at risk / blocked), surfaces concrete numbers, and shows OKR progress.
 
 ### Handoff Skills
 
@@ -156,6 +163,7 @@ Write a leadership update for this week — here's our OKR status and what shipp
 ```
 Write a technical brief from this feature request for the engineering team
 ```
+Covers scope boundaries, technical constraints, edge cases with recommended handling, and open questions engineering needs to resolve.
 
 ---
 
