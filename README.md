@@ -82,12 +82,10 @@ Takes sprint data and produces all three stakeholder artefacts in a single guide
 ## Quick Start
 
 ```bash
-# Add the marketplace, then install the plugin
-/plugin marketplace add felipecabargas/gambit
-/plugin install gambit@felipecabargas-gambit
+/plugin install github:felipecabargas/gambit
 ```
 
-Or see [Installation](#installation) below for non-Claude environments.
+Or see [Installation](#installation) below for manual and non-Claude environments.
 
 ## Directory Structure
 
@@ -123,8 +121,7 @@ Or see [Installation](#installation) below for non-Claude environments.
 │   ├── skill-framework.md                 # Framework & philosophy
 │   └── contributing.md                    # How to contribute
 ├── examples/
-│   ├── acceptance-criteria-samples.md     # Sample evaluations
-│   └── [more examples coming]
+│   └── acceptance-criteria-samples.md     # Sample evaluations
 └── package.json                           # NPM metadata
 ```
 
@@ -135,11 +132,10 @@ Or see [Installation](#installation) below for non-Claude environments.
 From within Claude Code, run:
 
 ```bash
-/plugin marketplace add felipecabargas/gambit
-/plugin install gambit@felipecabargas-gambit
+/plugin install github:felipecabargas/gambit
 ```
 
-Then run `/reload-plugins` to activate. Skills are immediately available as both model-invoked skills and slash commands (`/gambit:sprint-review`, `/gambit:verify-acceptance-criteria`, etc.).
+Skills are immediately available as both model-invoked skills and slash commands (`/gambit:sprint-review`, `/gambit:verify-acceptance-criteria`, etc.).
 
 ### Gemini CLI
 
