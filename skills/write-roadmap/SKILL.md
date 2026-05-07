@@ -9,7 +9,7 @@ description: |
   "what should we build and when", "turn this strategy into a roadmap", "build a Now/Next/Later
   plan", or after write-okrs.
 compatibility: "Requires filesystem access to project directory. Works best with STRATEGY.md and OKRs docs."
-version: 1.0.0
+version: 1.1.0
 argument-hint: "[paste strategy/OKRs or describe your priorities]"
 allowed-tools: [Read, Write, Bash]
 ---
@@ -80,7 +80,7 @@ If the team strongly prefers quarters over horizons (e.g. for board reporting), 
 
 ## How It Works
 
-The skill follows four steps to produce a roadmap that is honest about uncertainty and traceable to strategy.
+The skill follows five steps to produce a roadmap that is honest about uncertainty, traceable to strategy, and verified to address every Key Result.
 
 ### Step 0 — Scan for Strategy and OKR Documents (silent)
 
@@ -126,6 +126,26 @@ Every theme in every horizon is marked with its commitment status:
 - **Directional** — strategically intended but not yet fully scoped or resourced. The team's best current thinking. May change.
 
 All Now-horizon themes are Committed by default (if a Now theme cannot be committed to, it should move to Next). Next and Later themes are Directional unless the team has explicitly pre-committed capacity.
+
+### Step 5 — KR Coverage Gate
+
+After all themes are placed and marked, every Key Result from the OKR input (or from the OKR file found during Step 0) is checked for roadmap coverage. This step runs automatically before the document is saved.
+
+**How coverage is determined:**
+
+Coverage is assessed by semantic alignment, not keyword matching. A KR about reducing churn may be covered by a roadmap theme on improving onboarding or reducing time-to-value — the skill assesses whether the intended outcome of the theme would plausibly move the KR metric, not whether the same words appear in both. Pairing is directional and reasonable, not exhaustive.
+
+**For each KR:**
+- **At least one theme — in any horizon — plausibly addresses it:** KR is marked ✅ Covered and linked to the theme(s) and horizon(s).
+- **No theme covers it:** The skill asks a targeted question naming the specific KR:
+
+  > *"KR 2.3 — 'Reduce 30-day churn from 15% to 8%' — has no roadmap item covering it in any horizon. What is the team planning to build against this? Or should we mark it as intentionally unaddressed this cycle?"*
+
+  The user can either:
+  - Describe what the team is planning (the skill adds or links a theme on the roadmap), or
+  - Mark the KR as **Intentionally Unaddressed** and provide a reason (e.g. *"deprioritised in favour of activation work; revisit next quarter"*)
+
+**The roadmap is not saved until every KR is either covered or explicitly marked as intentionally unaddressed.** A KR Coverage table is appended to `ROADMAP.md` as the audit trail.
 
 ## Output Format
 
@@ -201,6 +221,17 @@ The following areas are out of scope for this roadmap period and the reasons why
 | Theme | Depends On | Owner | Status |
 |---|---|---|---|
 | [Theme] | [External system / team / Now-horizon theme] | [Owner] | [Resolved / Open] |
+
+---
+
+## KR Coverage
+
+| Key Result | Roadmap Theme(s) | Horizon | Status |
+|---|---|---|---|
+| KR 1.1: [KR statement] | [Theme name] | Now | ✅ Covered |
+| KR 1.2: [KR statement] | [Theme name] | Next | ✅ Covered |
+| KR 2.1: [KR statement] | [Theme A], [Theme B] | Now / Next | ✅ Covered |
+| KR 2.2: [KR statement] | — | — | ⏸ Intentionally Unaddressed — [user's stated reason] |
 ```
 
 ## Key Rules
@@ -211,6 +242,7 @@ These rules are enforced before the roadmap is saved.
 - **No dates unless the user provides them** — the skill never invents delivery dates. If the user provides dates ("we need the compliance work done by October for a customer audit"), those dates are included verbatim. Fabricated dates create false expectations and erode trust when plans change.
 - **Every theme links to a strategy pillar or Key Result** — a theme that cannot be traced to a pillar or KR is either a tactical task (not roadmap-level work) or a sign that the strategy is incomplete. Unlinked themes are flagged and the user is asked to either link them or move them to "Explicitly Not Doing."
 - **"Explicitly Not Doing" section is required** — a roadmap without explicit exclusions is not a roadmap, it is a list. The value of a roadmap is as much in what it says no to as what it says yes to. Exclusions prevent scope creep, give stakeholders a clear answer when they ask about missing items, and demonstrate that the team has made deliberate trade-offs. The skill will not save a roadmap without at least two entries in this section.
+- **Every KR must have at least one roadmap item covering it** — after drafting, Step 5 checks every Key Result from the OKR input against the roadmap by semantic alignment. Any KR with no coverage triggers a targeted question before the document is saved. KRs the team has decided not to address this cycle must be explicitly marked as intentionally unaddressed with a stated reason; they appear in the KR Coverage table so the decision is visible and auditable.
 
 ## How to Trigger
 
@@ -223,4 +255,4 @@ Ask Claude to write a roadmap by saying things like:
 - "What should we build and when — here are our strategy pillars"
 - "I just finished writing OKRs — now build the roadmap"
 
-Claude will automatically invoke this skill, run the four-step process, and save the result as `ROADMAP.md` in your project directory.
+Claude will automatically invoke this skill, run the five-step process, and save the result as `ROADMAP.md` in your project directory.
