@@ -121,8 +121,6 @@ Or see [Installation](#installation) below for manual and non-Claude environment
 │   ├── getting-started.md                 # Installation & usage guide
 │   ├── skill-framework.md                 # Framework & philosophy
 │   └── contributing.md                    # How to contribute
-├── examples/
-│   └── acceptance-criteria-samples.md     # Sample evaluations
 └── package.json                           # NPM metadata
 ```
 
