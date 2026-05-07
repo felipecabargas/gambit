@@ -82,7 +82,8 @@ Takes sprint data and produces all three stakeholder artefacts in a single guide
 ## Quick Start
 
 ```bash
-/plugin install github:felipecabargas/gambit
+/plugin marketplace add felipecabargas/gambit
+/plugin install gambit@felipecabargas-gambit
 ```
 
 Or see [Installation](#installation) below for manual and non-Claude environments.
@@ -132,7 +133,8 @@ Or see [Installation](#installation) below for manual and non-Claude environment
 From within Claude Code, run:
 
 ```bash
-/plugin install github:felipecabargas/gambit
+/plugin marketplace add felipecabargas/gambit
+/plugin install gambit@felipecabargas-gambit
 ```
 
 Skills are immediately available as both model-invoked skills and slash commands (`/gambit:sprint-review`, `/gambit:verify-acceptance-criteria`, etc.).

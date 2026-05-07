@@ -9,7 +9,8 @@ This guide walks you through installing and using Gambit in your Claude environm
 From within Claude Code, run:
 
 ```bash
-/plugin install github:felipecabargas/gambit
+/plugin marketplace add felipecabargas/gambit
+/plugin install gambit@felipecabargas-gambit
 ```
 
 Skills are immediately available as model-invoked skills and slash commands. No restart required.
@@ -215,7 +216,7 @@ These are ACs for a mobile ecommerce checkout flow — review with mobile UX in 
 
 1. Start a fresh conversation — skills load at session start
 2. Confirm the install succeeded with `/plugin list`
-3. Reinstall if needed: `/plugin install github:felipecabargas/gambit`
+3. Reinstall if needed: `/plugin marketplace add felipecabargas/gambit` then `/plugin install gambit@felipecabargas-gambit`
 
 ### Skills not appearing after manual install
 
