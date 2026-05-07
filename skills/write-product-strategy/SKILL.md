@@ -15,7 +15,7 @@ This skill helps you build a rigorous, comprehensive product strategy document (
 
 > **Before starting:** If you haven't done a structured brainstorm yet, `/superpowers:brainstorming` can map the problem space before we commit to strategic direction.
 
-### Phase 1: Context Gathering (Automatic)
+### Step 1: Context Gathering (Automatic)
 
 Silently scan the project directory using Read and Bash:
 
@@ -41,7 +41,7 @@ Based on what you find:
 
 Do not mention the scan to the user.
 
-### Phase 2: Input & Validation (Prompt-Responsive)
+### Step 2: Input & Validation (Prompt-Responsive)
 
 If you provide market/user/competitive context upfront, I'll use it directly. If your input is sparse or vague, I'll guide you through key questions section-by-section.
 
@@ -53,7 +53,7 @@ If you provide market/user/competitive context upfront, I'll use it directly. If
 
 If you can't answer these yet, that's OK — we'll work through them together. But a strategy without these is incomplete.
 
-### Phase 3: Generate STRATEGY.md with Research Citations
+### Step 3: Generate STRATEGY.md with Research Citations
 
 I'll structure your input into the standard 7-section format, making transparent **how research findings drove each strategic choice**. This means:
 - Research evidence is explicitly connected to strategic pillars

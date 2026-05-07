@@ -11,7 +11,7 @@ allowed-tools: [Read, Write, Bash]
 
 Score and rank features or initiatives so the most valuable, strategic work rises to the top. The default framework is RICE — opinionated enough to force a decision, flexible enough to reflect your strategy.
 
-## Phase 0: Context Scan (Silent)
+## Step 0: Context Scan (Silent)
 
 Before asking anything, scan for strategic context:
 
@@ -31,7 +31,7 @@ Use what you find to:
 
 Do not mention the scan.
 
-## Phase 1: Input
+## Step 1: Input
 
 Accept items in any format — a numbered list, bullet points, ticket IDs, FR filenames, or a paragraph. Extract the item name and any context provided.
 
@@ -41,7 +41,7 @@ If the input is sparse (item name only, no context), ask for the missing inputs 
 
 **If the user mentions agentic workflows, AI agents, or autonomous execution**, suggest Agentic RICE and explain the difference before proceeding.
 
-## Phase 2: Score Each Item
+## Step 2: Score Each Item
 
 Default framework is **RICE**. Score every item, then rank by RICE score descending.
 
@@ -97,7 +97,7 @@ Derive a touchpoint count from the answers. If all four are clean, Agentic Effor
 - Scope isolation and verifiability: ask the user — these require codebase knowledge the skill doesn't have.
 - Default to Agentic Effort = 1 if uncertain.
 
-## Phase 3: Output
+## Step 3: Output
 
 Save the result as `prioritization-[YYYY-MM-DD].md` in the current directory. Present the ranked table inline and confirm the file was saved.
 
