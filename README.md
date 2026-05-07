@@ -46,6 +46,8 @@ Agents chain multiple skills in sequence, pausing for confirmation between steps
 
 ## Installation
 
+> **No terminal?** If you're a non-technical PM using Claude's desktop app, see [Using Gambit in Claude Cowork](docs/cowork.md) for a terminal-free setup guide and a full end-to-end workflow walkthrough.
+
 ### Claude Plugin (recommended)
 
 From within Claude Code, run:
