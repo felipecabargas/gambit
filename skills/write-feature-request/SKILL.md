@@ -5,7 +5,7 @@ description: |
 
   Use this skill whenever a user needs to author or improve a feature request. Trigger on: "write a feature request", "help me write an FR", "create a feature spec", "draft a feature proposal", "I want to define a new feature", "turn this idea into a feature request", or similar requests.
 compatibility: "Requires filesystem access to project directory. Works best with markdown and project context documents."
-version: 1.0.0
+version: 1.1.0
 argument-hint: "[feature idea or problem]"
 allowed-tools: [Read, Write, Bash]
 ---
@@ -72,7 +72,18 @@ This loop continues until every requirement has at least one valid AC.
 
 ### Phase 3 — FR Assembly
 
-Once all ACs are validated, the skill assembles the complete FR in the output format below and returns it to the user.
+Once all ACs are validated, the skill assembles the complete FR in the output format below and hands it off to Phase 4.
+
+### Phase 4 — Verification Gate
+
+After assembly, every AC in every requirement table is evaluated against the full **five-dimension quality standard**: Specificity, Testability, Outcome-Focus, Measurability, and Independence. This step is automatic — it always runs and the user is not prompted.
+
+**For each AC that does not pass:**
+
+- **Blocker-severity gap** — the AC cannot be objectively verified, is internally contradictory, or relies entirely on another AC to be meaningful: the affected requirement is sent back to Phase 2. Phase 2 collects the missing information, regenerates ACs for that requirement only, and Phase 4 re-evaluates. Other requirements are not disturbed.
+- **Warning-severity gap** — the AC is testable but imprecise, vague in a bounded way, or rests on an unstated assumption: the AC is rewritten inline. The improved version replaces the original in the FR. No Phase 2 loop.
+
+**The FR is returned to the user only when every AC across every requirement has at least one ✅ Pass.** Once the gate clears, a Verification Summary is appended to the FR so the user can see the gate was applied.
 
 ---
 
@@ -140,34 +151,52 @@ The skill returns the FR in the following Markdown structure:
 | # | Risk | Likelihood | Impact | Mitigation |
 |---|---|---|---|---|
 | 1 | [Risk description] | High / Medium / Low | High / Medium / Low | [Mitigation idea] |
+
+---
+
+## Verification Summary
+
+| Requirement | ACs | Gate |
+|---|---|---|
+| REQ-1: [Name] | 2 | ✅ Passed |
+| REQ-2: [Name] | 3 | ✅ Revised |
+| NFR-1: [Name] | 1 | 🔁 Reopened · resolved |
 ```
+
+Gate key: **✅ Passed** — all ACs cleared on first check · **✅ Revised** — one or more ACs were rewritten to resolve warnings · **🔁 Reopened** — a blocker triggered a Phase 2 loop for this requirement; shown as resolved once cleared.
 
 ---
 
 ## Evaluation Framework
 
-When generating ACs, the skill evaluates each requirement against the following:
+The skill applies two quality gates at different phases:
+
+- **Phase 2 gate** (four dimensions) — used during AC generation to decide whether an AC can be written at all
+- **Phase 4 gate** (five dimensions) — used after FR assembly to verify every assembled AC before the FR is returned
 
 ### AC Quality Dimensions
 
-| Dimension | Description | Failure Mode |
-|---|---|---|
-| **Specificity** | Is the behavior defined precisely enough that two people would interpret it the same way? | Vague verbs ("works well", "is fast", "feels intuitive") |
-| **Testability** | Can QA write an automated or manual test that unambiguously passes or fails? | No clear trigger, action, or outcome described |
-| **Outcome-Focus** | Does the AC describe what the user experiences, not how the system implements it? | Implementation details creep ("the database must use...") |
-| **Measurability** | Are thresholds, counts, or time bounds specified where relevant? | Relative/subjective metrics ("significantly faster") |
+| Dimension | Description | Failure Mode | Gate |
+|---|---|---|---|
+| **Specificity** | Is the behavior defined precisely enough that two people would interpret it the same way? | Vague verbs ("works well", "is fast", "feels intuitive") | Phase 2 + 4 |
+| **Testability** | Can QA write an automated or manual test that unambiguously passes or fails? | No clear trigger, action, or outcome described | Phase 2 + 4 |
+| **Outcome-Focus** | Does the AC describe what the user experiences, not how the system implements it? | Implementation details creep ("the database must use...") | Phase 2 + 4 |
+| **Measurability** | Are thresholds, counts, or time bounds specified where relevant? | Relative/subjective metrics ("significantly faster") | Phase 2 + 4 |
+| **Independence** | Does the AC stand alone? Can it be understood and tested without reading other ACs? | AC only makes sense when read alongside another AC | Phase 4 only |
 
 ### Severity of AC Gaps
 
-| Severity | Meaning | Action |
-|---|---|---|
-| 🚫 **Blocker** | AC cannot be written at all — the requirement is too vague or contradictory | Skill pauses and requests clarification before continuing |
-| ⚠️ **Warning** | AC can be written but with assumptions — assumptions are made explicit | Skill writes the AC with a note flagging the assumption |
-| ✅ **Pass** | AC is fully deterministic and testable | AC is included in the FR |
+| Severity | Meaning | Phase 2 Action | Phase 4 Action |
+|---|---|---|---|
+| 🚫 **Blocker** | AC cannot be written or verified — requirement is too vague, contradictory, or non-independently testable | Skill pauses and requests clarification before continuing | Requirement is sent back to Phase 2; Phase 4 re-evaluates after resolution |
+| ⚠️ **Warning** | AC can be written but with assumptions — assumptions are made explicit | Skill writes the AC with a note flagging the assumption | AC is rewritten inline; improved version replaces original in the FR |
+| ✅ **Pass** | AC is fully deterministic and testable | AC is included in the FR | AC is confirmed; included as-is |
 
 ### Minimum Quality Gate
 
-The FR is only assembled when **all requirements have at least one `✅ Pass` AC**. Requirements with only `⚠️ Warning` ACs are included, but assumptions are surfaced in the Open Questions section for the team to resolve.
+The FR is only assembled (Phase 3) when **all requirements have at least one `✅ Pass` AC** from Phase 2. Requirements with only `⚠️ Warning` ACs are included, but assumptions are surfaced in the Open Questions section.
+
+The FR is only returned to the user (after Phase 4) when **every AC across every requirement has at least one `✅ Pass`** on all five dimensions. Phase 4 rewrites or escalates until this condition is met.
 
 ---
 
