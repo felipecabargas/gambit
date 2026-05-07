@@ -141,6 +141,20 @@ From within Claude Code, run:
 
 Then run `/reload-plugins` to activate. Skills are immediately available as both model-invoked skills and slash commands (`/gambit:sprint-review`, `/gambit:verify-acceptance-criteria`, etc.).
 
+### Gemini CLI
+
+```bash
+gemini extensions install https://github.com/felipecabargas/gambit
+```
+
+Update later:
+
+```bash
+gemini extensions update gambit
+```
+
+Once installed, skills activate on demand — just describe what you need and Gemini will invoke the right skill automatically.
+
 ### Optional: Superpowers
 
 Some skills surface suggestions for `/superpowers:brainstorming` (at the start of strategy and feature request workflows) and `/superpowers:requesting-code-review` (after writing a technical brief). These come from the [Superpowers plugin](https://github.com/obra/superpowers) — install it separately to use them. Gambit works fully without it.

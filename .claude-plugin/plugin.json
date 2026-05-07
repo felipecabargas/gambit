@@ -1,7 +1,7 @@
 {
   "name": "gambit",
   "description": "Twelve product management skills and four chained workflow agents for PM workflows",
-  "version": "2.0.0",
+  "version": "2.2.0",
   "author": {
     "name": "A. Felipe Cabargas"
   },
