@@ -1,6 +1,6 @@
 # Gambit
 
-Gambit provides twelve product management skills and four chained workflow agents for product management workflows.
+Gambit provides thirteen product management skills and four chained workflow agents for product management workflows.
 
 Activate any skill or agent using `activate_skill gambit:<name>`.
 
@@ -11,6 +11,7 @@ Activate any skill or agent using `activate_skill gambit:<name>`.
 - **`gambit:write-feature-request`** — guided FR authoring with auto-generated acceptance criteria. Trigger on: "write a feature request", "help me write an FR", "create a feature spec".
 - **`gambit:write-product-strategy`** — generate product strategy documents aligned with business goals. Trigger on: "write a product strategy", "help me write a STRATEGY.md".
 - **`gambit:sprint-review`** — turn sprint data into a polished stakeholder report. Trigger on: "write my sprint review", "summarize what we shipped", "generate a sprint recap".
+- **`gambit:prioritize`** — score and rank features or initiatives using RICE, Agentic RICE, ICE, or MoSCoW. Scans existing strategy and OKRs to ground scores in what the team is optimizing for. Trigger on: "prioritize these features", "help me rank the backlog", "score these initiatives", "what should we build next", "rank these using RICE".
 
 ### Discovery
 - **`gambit:synthesize-user-research`** — synthesize raw research into themes, pain points, and jobs-to-be-done. Trigger on: "synthesize my research", "extract insights from this feedback".
