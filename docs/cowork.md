@@ -8,13 +8,25 @@ Claude Code (the CLI) is built for engineers. Cowork is built for everyone else.
 
 - A chat interface you can open like any other desktop app
 - Slash commands and natural-language skill invocation
-- No Git, no terminal required beyond a one-time file copy
+- No Git, no terminal, no command line
 
 ---
 
 ## Installing Gambit in Cowork
 
-Cowork doesn't support `/plugin` commands, so installation is a one-time file copy:
+### Via the Cowork UI (recommended)
+
+1. Open Cowork and click **Customize** in the sidebar
+2. Go to **Plugins → Personal**
+3. Click **+**, then select **Add Marketplace**
+4. Search for **Gambit** (or paste `felipecabargas/gambit`)
+5. Click **Install** and follow the prompts
+
+Gambit's skills are immediately available in every conversation. No restart required.
+
+### Alternative: manual file copy
+
+If the marketplace isn't available in your version of Cowork:
 
 1. Go to the [Gambit releases page](https://github.com/felipecabargas/gambit/releases/latest)
 2. Under **Assets**, download **`gambit-skills-vX.Y.Z.zip`** (not "Source code")
