@@ -1,45 +1,20 @@
 # Using Gambit in Claude Cowork
 
-Claude Cowork is Anthropic's desktop application designed for non-technical users who want the full power of Claude — including plugins and skills — without needing a terminal, IDE, or command-line environment. If you're a PM who doesn't live in a code editor, Cowork is your starting point.
+Claude Cowork is Anthropic's desktop application designed for non-technical users who want the full power of Claude — including skills — without needing a terminal or IDE. If you're a PM who doesn't live in a code editor, Cowork is your starting point.
 
 ## Why Cowork for PMs
 
 Claude Code (the CLI) is built for engineers. Cowork is built for everyone else. It provides:
 
 - A chat interface you can open like any other desktop app
-- Full plugin support, including Gambit
 - Slash commands and natural-language skill invocation
-- No Git, no terminal, no setup beyond a one-time install
-
-The plugin install commands that would normally require a terminal **work directly in the Cowork chat interface**. You type them as messages, and Cowork handles the rest.
+- No Git, no terminal required beyond a one-time file copy
 
 ---
 
 ## Installing Gambit in Cowork
 
-Open Cowork, start a new conversation, and paste the following two lines — one at a time — into the chat:
-
-```
-/plugin marketplace add felipecabargas/gambit
-```
-
-Wait for confirmation, then:
-
-```
-/plugin install gambit@felipecabargas-gambit
-```
-
-Finally, run:
-
-```
-/reload-plugins
-```
-
-That's it. Gambit's thirteen skills and four workflow agents are now available in every conversation. No restart required.
-
-### Alternative: manual download
-
-If the plugin commands don't work in your version of Cowork, you can install skills by copying files manually:
+Cowork doesn't support `/plugin` commands, so installation is a one-time file copy:
 
 1. Go to the [Gambit releases page](https://github.com/felipecabargas/gambit/releases/latest)
 2. Under **Assets**, download **`gambit-skills-vX.Y.Z.zip`** (not "Source code")
