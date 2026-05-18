@@ -71,6 +71,16 @@ Update later:
 gemini extensions update gambit
 ```
 
+### OpenCode
+
+```json
+{
+  "plugins": ["gambit-opencode"]
+}
+```
+
+Add to your `opencode.json`. Commands are available as `/gambit-write-feature-request`, `/gambit-sprint-review`, etc. See [gambit-opencode](https://github.com/felipecabargas/gambit-opencode) for the full list.
+
 ### Optional: Superpowers
 
 Some skills surface suggestions for `/superpowers:brainstorming` (at the start of strategy and feature request workflows) and `/superpowers:requesting-code-review` (after writing a technical brief). These come from the [Superpowers plugin](https://github.com/obra/superpowers) — install it separately to use them. Gambit works fully without it.
