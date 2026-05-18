@@ -5,7 +5,7 @@ description: |
 
   Use this skill whenever a user needs to author or improve a feature request. Trigger on: "write a feature request", "help me write an FR", "create a feature spec", "draft a feature proposal", "I want to define a new feature", "turn this idea into a feature request", or similar requests.
 compatibility: "Requires filesystem access to project directory. Works best with markdown and project context documents."
-version: 1.0.0
+version: 1.1.0
 argument-hint: "[feature idea or problem]"
 allowed-tools: [Read, Write, Bash]
 ---
@@ -41,7 +41,7 @@ find . -maxdepth 4 \( -name "FR-*.md" -o -name "feature-request-*.md" \) 2>/dev/
 
 If related FRs are found, surface them before proceeding: *"I found [N] existing feature requests that may be related — [titles]. Is this a new spec, or should we update one of these?"*
 
-### Phase 1 — Information Gathering
+### Step 1 — Information Gathering
 
 The skill collects four foundational inputs:
 
@@ -54,7 +54,7 @@ The skill collects four foundational inputs:
 
 The skill accepts loose, conversational answers and structures them — you don't need to write formally.
 
-### Phase 2 — AC Generation and Quality Gate
+### Step 2 — AC Generation and Quality Gate
 
 For every requirement collected, the skill attempts to generate at least one concrete Acceptance Criterion (AC). A good AC must be:
 - **Specific** — unambiguous, with no room for individual interpretation
@@ -70,9 +70,20 @@ For every requirement collected, the skill attempts to generate at least one con
 
 This loop continues until every requirement has at least one valid AC.
 
-### Phase 3 — FR Assembly
+### Step 3 — FR Assembly
 
-Once all ACs are validated, the skill assembles the complete FR in the output format below and returns it to the user.
+Once all ACs are validated, the skill assembles the complete FR in the output format below and hands it off to Step 4.
+
+### Step 4 — Verification Gate
+
+After assembly, every AC in every requirement table is evaluated against the full **five-dimension quality standard**: Specificity, Testability, Outcome-Focus, Measurability, and Independence. This step is automatic — it always runs and the user is not prompted.
+
+**For each AC that does not pass:**
+
+- **Blocker-severity gap** — the AC cannot be objectively verified, is internally contradictory, or relies entirely on another AC to be meaningful: the affected requirement is sent back to Step 2. Step 2 collects the missing information, regenerates ACs for that requirement only, and Step 4 re-evaluates. Other requirements are not disturbed.
+- **Warning-severity gap** — the AC is testable but imprecise, vague in a bounded way, or rests on an unstated assumption: the AC is rewritten inline. The improved version replaces the original in the FR. No Step 2 loop.
+
+**The FR is returned to the user only when every AC across every requirement has at least one ✅ Pass.** Once the gate clears, a Verification Summary is appended to the FR so the user can see the gate was applied.
 
 ---
 
@@ -140,34 +151,52 @@ The skill returns the FR in the following Markdown structure:
 | # | Risk | Likelihood | Impact | Mitigation |
 |---|---|---|---|---|
 | 1 | [Risk description] | High / Medium / Low | High / Medium / Low | [Mitigation idea] |
+
+---
+
+## Verification Summary
+
+| Requirement | ACs | Gate |
+|---|---|---|
+| REQ-1: [Name] | 2 | ✅ Passed |
+| REQ-2: [Name] | 3 | ✅ Revised |
+| NFR-1: [Name] | 1 | 🔁 Reopened · resolved |
 ```
+
+Gate key: **✅ Passed** — all ACs cleared on first check · **✅ Revised** — one or more ACs were rewritten to resolve warnings · **🔁 Reopened** — a blocker triggered a Step 2 loop for this requirement; shown as resolved once cleared.
 
 ---
 
 ## Evaluation Framework
 
-When generating ACs, the skill evaluates each requirement against the following:
+The skill applies two quality gates at different phases:
+
+- **Step 2 gate** (four dimensions) — used during AC generation to decide whether an AC can be written at all
+- **Step 4 gate** (five dimensions) — used after FR assembly to verify every assembled AC before the FR is returned
 
 ### AC Quality Dimensions
 
-| Dimension | Description | Failure Mode |
-|---|---|---|
-| **Specificity** | Is the behavior defined precisely enough that two people would interpret it the same way? | Vague verbs ("works well", "is fast", "feels intuitive") |
-| **Testability** | Can QA write an automated or manual test that unambiguously passes or fails? | No clear trigger, action, or outcome described |
-| **Outcome-Focus** | Does the AC describe what the user experiences, not how the system implements it? | Implementation details creep ("the database must use...") |
-| **Measurability** | Are thresholds, counts, or time bounds specified where relevant? | Relative/subjective metrics ("significantly faster") |
+| Dimension | Description | Failure Mode | Gate |
+|---|---|---|---|
+| **Specificity** | Is the behavior defined precisely enough that two people would interpret it the same way? | Vague verbs ("works well", "is fast", "feels intuitive") | Step 2 + 4 |
+| **Testability** | Can QA write an automated or manual test that unambiguously passes or fails? | No clear trigger, action, or outcome described | Step 2 + 4 |
+| **Outcome-Focus** | Does the AC describe what the user experiences, not how the system implements it? | Implementation details creep ("the database must use...") | Step 2 + 4 |
+| **Measurability** | Are thresholds, counts, or time bounds specified where relevant? | Relative/subjective metrics ("significantly faster") | Step 2 + 4 |
+| **Independence** | Does the AC stand alone? Can it be understood and tested without reading other ACs? | AC only makes sense when read alongside another AC | Step 4 only |
 
 ### Severity of AC Gaps
 
-| Severity | Meaning | Action |
-|---|---|---|
-| 🚫 **Blocker** | AC cannot be written at all — the requirement is too vague or contradictory | Skill pauses and requests clarification before continuing |
-| ⚠️ **Warning** | AC can be written but with assumptions — assumptions are made explicit | Skill writes the AC with a note flagging the assumption |
-| ✅ **Pass** | AC is fully deterministic and testable | AC is included in the FR |
+| Severity | Meaning | Step 2 Action | Step 4 Action |
+|---|---|---|---|
+| 🚫 **Blocker** | AC cannot be written or verified — requirement is too vague, contradictory, or non-independently testable | Skill pauses and requests clarification before continuing | Requirement is sent back to Step 2; Step 4 re-evaluates after resolution |
+| ⚠️ **Warning** | AC can be written but with assumptions — assumptions are made explicit | Skill writes the AC with a note flagging the assumption | AC is rewritten inline; improved version replaces original in the FR |
+| ✅ **Pass** | AC is fully deterministic and testable | AC is included in the FR | AC is confirmed; included as-is |
 
 ### Minimum Quality Gate
 
-The FR is only assembled when **all requirements have at least one `✅ Pass` AC**. Requirements with only `⚠️ Warning` ACs are included, but assumptions are surfaced in the Open Questions section for the team to resolve.
+The FR is only assembled (Step 3) when **all requirements have at least one `✅ Pass` AC** from Step 2. Requirements with only `⚠️ Warning` ACs are included, but assumptions are surfaced in the Open Questions section.
+
+The FR is only returned to the user (after Step 4) when **every AC across every requirement has at least one `✅ Pass`** on all five dimensions. Step 4 rewrites or escalates until this condition is met.
 
 ---
 
@@ -217,7 +246,7 @@ After generating the FR, the skill automatically identifies:
 
 **4. Treat the AC table as a contract.** The AC table in the output is written to be directly usable as a QA checklist. Share it with engineering as-is.
 
-**5. Iterate fast.** You can re-run Phase 2 on any single requirement by asking: "Rework the ACs for requirement [X]" — it will only regenerate that section.
+**5. Iterate fast.** You can re-run Step 2 on any single requirement by asking: "Rework the ACs for requirement [X]" — it will only regenerate that section.
 
 ---
 
@@ -226,7 +255,7 @@ After generating the FR, the skill automatically identifies:
 **Trigger:**
 > "Help me write a feature request for letting users export their data"
 
-**Skill — Phase 1 Questions:**
+**Skill — Step 1 Questions:**
 > Let's build your FR. I'll start with the problem.
 >
 > 1. **Problem**: Who is asking to export data, and what are they trying to do with it that they can't do today? Is there any data (support tickets, churn signals, user feedback) that shows how often this is a pain point?
@@ -241,7 +270,7 @@ After generating the FR, the skill automatically identifies:
 
 *(... conversation continues through outcomes and requirements ...)*
 
-**Skill — Phase 2, AC Blocker Example:**
+**Skill — Step 2, AC Blocker Example:**
 > ⚠️ I can't write a testable AC for requirement **REQ-3: "Export should be fast"** — "fast" is not measurable.
 >
 > Can you tell me:
