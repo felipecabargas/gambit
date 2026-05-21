@@ -180,7 +180,7 @@ Evidence: [P4]: "Every Monday I have to pull the weekly report manually because 
 
 ## How to Trigger
 
-Ask Claude to synthesise user research by saying things like:
+Ask your assistant to synthesise user research by saying things like:
 
 - "Synthesize my research" followed by pasting your notes
 - "What are the themes across these user interviews?"
@@ -189,4 +189,4 @@ Ask Claude to synthesise user research by saying things like:
 - "Pull out the key themes from this NPS data"
 - "Here are my support tickets — what patterns do you see?"
 
-Claude will automatically invoke this skill, run the five-step synthesis process, and save the results as a structured markdown file in your project directory.
+This skill will automatically, run the five-step synthesis process, and save the results as a structured markdown file in your project directory.

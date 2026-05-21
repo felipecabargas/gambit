@@ -36,4 +36,4 @@ Agents chain multiple skills in sequence, pausing for confirmation between steps
 - **`gambit:strategy-to-roadmap`** — write-product-strategy → write-okrs → write-roadmap. Trigger on: "help me build our strategy and roadmap", "run strategy-to-roadmap".
 - **`gambit:sprint-to-stakeholders`** — sprint-review → write-release-notes → write-stakeholder-update. Trigger on: "generate all my sprint comms", "run sprint-to-stakeholders".
 
-@./references/gemini-tools.md
+@./references/antigravity-tools.md

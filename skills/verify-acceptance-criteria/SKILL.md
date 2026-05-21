@@ -227,7 +227,7 @@ This version is measurable, testable, clear, and outcome-focused.
 
 ## How to Trigger This Skill
 
-Ask Claude to verify acceptance criteria by saying things like:
+Ask your assistant to verify acceptance criteria by saying things like:
 - "Review these acceptance criteria and tell me if they're good"
 - "Check if these ACs will cause problems during testing"
 - "Audit our user story criteria against quality standards"
@@ -235,4 +235,4 @@ Ask Claude to verify acceptance criteria by saying things like:
 - "Rewrite these acceptance criteria to be clearer"
 - "Do we have enough detail in these ACs for the team to start work?"
 
-Claude will automatically invoke this skill and generate a structured evaluation report.
+This skill will automatically and generate a structured evaluation report.

@@ -369,16 +369,6 @@ See `contributing.md` for detailed guidelines.
 - Numbers over adjectives: concrete metrics cited wherever they exist in the source data
 - Risks stated factually with owner and expected resolution, never vague concern language
 
-## Future Directions
-
-As this skill collection grows, we envision:
-
-1. **Integrated Workflows** - Skills that work together end-to-end
-2. **Custom Frameworks** - Organization-specific evaluation dimensions
-3. **Tool Ecosystem** - Integration with product management tools
-4. **Community Skills** - User-contributed specialized skills
-5. **Adaptive Learning** - Skills that improve based on team feedback
-
 ## Agent Pattern
 
 Agents are chained workflow orchestrators that run multiple skills in sequence within a single session. They share the same `SKILL.md` format as standalone skills but live in the `agents/` directory.

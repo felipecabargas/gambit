@@ -27,8 +27,12 @@ git clone https://github.com/felipecabargas/gambit.git
 # Copy all skills at once
 cp -r gambit/skills/* ~/.claude/skills/
 
-# Copy all agents at once
-cp -r gambit/agents/* ~/.claude/skills/
+# Copy all agents at once (creates individual skill dirs for each)
+for f in gambit/agents/*.md; do
+  name=$(basename "$f" .md)
+  mkdir -p ~/.claude/skills/"$name"
+  cp "$f" ~/.claude/skills/"$name"/SKILL.md
+done
 ```
 
 Create the directory first if it doesn't exist: `mkdir -p ~/.claude/skills`

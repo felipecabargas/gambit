@@ -214,7 +214,7 @@ These rules are enforced before the roadmap is saved.
 
 ## How to Trigger
 
-Ask Claude to write a roadmap by saying things like:
+Ask your assistant to write a roadmap by saying things like:
 
 - "Write a roadmap from our strategy and OKRs"
 - "Create our ROADMAP.md for the next few quarters"
@@ -223,4 +223,4 @@ Ask Claude to write a roadmap by saying things like:
 - "What should we build and when — here are our strategy pillars"
 - "I just finished writing OKRs — now build the roadmap"
 
-Claude will automatically invoke this skill, run the four-step process, and save the result as `ROADMAP.md` in your project directory.
+This skill will automatically, run the four-step process, and save the result as `ROADMAP.md` in your project directory.

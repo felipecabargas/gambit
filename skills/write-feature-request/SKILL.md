@@ -262,7 +262,7 @@ After generating the FR, the skill automatically identifies:
 
 ## How to Trigger This Skill
 
-Ask Claude to write a feature request by saying things like:
+Ask your assistant to write a feature request by saying things like:
 - "Write a feature request for [feature idea]"
 - "Help me define a new feature for [context]"
 - "Turn this customer problem into a proper FR"
@@ -270,4 +270,4 @@ Ask Claude to write a feature request by saying things like:
 - "I need to write up a feature, can you help?"
 - "Create a feature request with acceptance criteria for [idea]"
 
-Claude will automatically invoke this skill, guide you through the conversation, and return a fully structured FR in Markdown.
+This skill will automatically, guide you through the conversation, and return a fully structured FR in Markdown.

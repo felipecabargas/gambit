@@ -1,0 +1,22 @@
+name: Validate Skills
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate all skills
+        run: |
+          chmod +x scripts/validate-skill.sh
+          FAILED=0
+          for f in skills/*/SKILL.md; do
+            if ! bash scripts/validate-skill.sh "$f"; then
+              FAILED=1
+            fi
+          done
+          exit $FAILED

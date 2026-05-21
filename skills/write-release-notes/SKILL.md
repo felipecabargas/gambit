@@ -228,7 +228,7 @@ Lead with customer impact. Use the strongest version of the benefit. Appropriate
 
 ## How to Trigger
 
-Ask Claude to write release notes by saying things like:
+Ask your assistant to write release notes by saying things like:
 
 - "Write release notes for this sprint"
 - "Turn these tickets into customer-facing release notes"
@@ -237,4 +237,4 @@ Ask Claude to write release notes by saying things like:
 - "Write our changelog entry for the May 5 release"
 - "I just finished the sprint review — now write the release notes"
 
-Claude will automatically invoke this skill, run the four-step process, and save the result as `release-notes-[version-or-date].md` in your project directory.
+This skill will automatically, run the four-step process, and save the result as `release-notes-[version-or-date].md` in your project directory.

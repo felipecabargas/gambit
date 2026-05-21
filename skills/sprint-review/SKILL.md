@@ -136,3 +136,29 @@ Save the report as `sprint-review-[sprint-name-slugified].md` (e.g., `sprint-rev
 If you made any inferences — sprint goal, team name, groupings — list them briefly at the end of your message (not in the document):
 
 > *Inferences I made: sprint goal inferred from the ticket pattern; team name pulled from the CHK- prefix. Let me know if either is off.*
+
+## Output Format
+
+The skill saves a Markdown file named `sprint-review-[sprint-name].md` with seven sections:
+
+1. **Executive Summary** — 2–3 sentences, outcome-first
+2. **Sprint Goal & Outcome** — stated goal and hit/miss verdict
+3. **Highlights & Wins** — 3–5 named results with concrete impact
+4. **Completed Work** — tickets grouped into 3–6 themes
+5. **Risks & Blockers** — carry-overs and ongoing concerns
+6. **Sprint Metrics** — completion rate, ticket count, story points (if tracked)
+7. **Looking Ahead** — 1–2 sentences of forward context (omitted if nothing concrete to say)
+
+## How to Trigger
+
+Ask your assistant to write a sprint review by saying things like:
+
+- "Write my sprint review for Sprint 42 — here are the completed tickets: [paste list]"
+- "Generate a sprint recap from these JIRA tickets"
+- "Create a sprint report for the week of May 12–16"
+- "Summarize what we shipped this sprint for stakeholders"
+- "Help me write up our sprint — [paste ticket titles or PR list]"
+- "Turn these closed issues into a sprint review"
+- "Write a sprint summary — I'll paste the list"
+
+This skill will automatically, infer any missing context (sprint goal, team name, groupings), and save a stakeholder-ready report.

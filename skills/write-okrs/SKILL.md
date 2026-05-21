@@ -210,7 +210,7 @@ Now the KR measures whether the content investment (and other efforts) are movin
 
 ## How to Trigger
 
-Ask Claude to write OKRs by saying things like:
+Ask your assistant to write OKRs by saying things like:
 
 - "Write our OKRs for Q3 based on this strategy"
 - "Help me set OKRs for this quarter"
@@ -219,4 +219,4 @@ Ask Claude to write OKRs by saying things like:
 - "Draft Q2 2026 OKRs from our STRATEGY.md"
 - "I just finished writing the product strategy — now help me write the OKRs"
 
-Claude will automatically invoke this skill, run the five-step process, and save the results as `OKRs-[period].md` in your project directory.
+This skill will automatically, run the five-step process, and save the results as `OKRs-[period].md` in your project directory.

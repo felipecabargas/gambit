@@ -13,11 +13,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build skills zip
-        run: zip -r "gambit-skills-${{ github.ref_name }}.zip" skills/
+      - name: Validate all skills
+        run: |
+          chmod +x scripts/validate-skill.sh
+          FAILED=0
+          for f in skills/*/SKILL.md agents/*/SKILL.md; do
+            if ! bash scripts/validate-skill.sh "$f"; then
+              FAILED=1
+            fi
+          done
+          exit $FAILED
+
+      - name: Build release zip
+        run: zip -r "gambit-${{ github.ref_name }}.zip" skills/ agents/
 
       - name: Publish release
         uses: softprops/action-gh-release@v2
         with:
           generate_release_notes: true
-          files: gambit-skills-${{ github.ref_name }}.zip
+          files: gambit-${{ github.ref_name }}.zip

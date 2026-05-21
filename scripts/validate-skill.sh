@@ -12,6 +12,8 @@ if [ ! -f "$SKILL_FILE" ]; then
   exit 1
 fi
 
+WARNINGS=0
+
 # Frontmatter must open and close with ---
 DELIMITERS=$(grep -c "^---$" "$SKILL_FILE" 2>/dev/null || echo 0)
 if [ "$DELIMITERS" -lt 2 ]; then
@@ -27,11 +29,26 @@ for field in name description compatibility version argument-hint allowed-tools;
   fi
 done
 
-# Required body sections (skills)
-for section in "## When to Use" "## How" "## Output"; do
-  if ! grep -qF "$section" "$SKILL_FILE"; then
-    echo "WARNING: Expected section '$section' not found in $SKILL_FILE"
-  fi
-done
+# Trigger section — how users discover and invoke the skill
+if ! grep -qE "^## How to Trigger|^## Frequently Asked Questions" "$SKILL_FILE"; then
+  echo "WARNING: No trigger section found ('## How to Trigger' or '## Frequently Asked Questions') in $SKILL_FILE"
+  WARNINGS=$((WARNINGS + 1))
+fi
 
-echo "✓ $SKILL_FILE — valid"
+# Output section — what the skill produces
+if ! grep -qE "^## Output|^## What You'll Get" "$SKILL_FILE"; then
+  echo "WARNING: No output section found ('## Output...' or '## What You\\'ll Get') in $SKILL_FILE"
+  WARNINGS=$((WARNINGS + 1))
+fi
+
+# Process section — how the skill runs
+if ! grep -qE "^## Step [0-9]|^## How (the Skill Works|It Works|It Works)|^## When to Use" "$SKILL_FILE"; then
+  echo "WARNING: No clear process or entry-point section found in $SKILL_FILE"
+  WARNINGS=$((WARNINGS + 1))
+fi
+
+if [ "$WARNINGS" -gt 0 ]; then
+  echo "✓ $SKILL_FILE — valid with $WARNINGS warning(s)"
+else
+  echo "✓ $SKILL_FILE — valid"
+fi

@@ -59,16 +59,16 @@ From within Claude Code, run:
 
 Skills are immediately available as both model-invoked skills and slash commands (`/gambit:sprint-review`, `/gambit:verify-acceptance-criteria`, etc.).
 
-### Gemini CLI
+### Antigravity CLI
 
 ```bash
-gemini extensions install https://github.com/felipecabargas/gambit
+agy plugin install https://github.com/felipecabargas/gambit
 ```
 
 Update later:
 
 ```bash
-gemini extensions update gambit
+agy plugin update gambit
 ```
 
 ### OpenCode
@@ -123,10 +123,10 @@ Skills activate from natural language — just describe what you need. See [docs
 │   ├── write-stakeholder-update/
 │   └── write-technical-brief/
 ├── agents/
-│   ├── discovery-to-fr/
-│   ├── fr-to-ready/
-│   ├── strategy-to-roadmap/
-│   └── sprint-to-stakeholders/
+│   ├── discovery-to-fr.md
+│   ├── fr-to-ready.md
+│   ├── strategy-to-roadmap.md
+│   └── sprint-to-stakeholders.md
 ├── docs/
 │   ├── getting-started.md
 │   ├── cowork.md                          # Terminal-free setup for non-technical PMs
