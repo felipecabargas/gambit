@@ -62,13 +62,13 @@ Skills are immediately available as both model-invoked skills and slash commands
 ### Antigravity CLI
 
 ```bash
-agy extensions install https://github.com/felipecabargas/gambit
+agy plugin install https://github.com/felipecabargas/gambit
 ```
 
 Update later:
 
 ```bash
-agy extensions update gambit
+agy plugin update gambit
 ```
 
 ### OpenCode
