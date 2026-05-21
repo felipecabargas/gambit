@@ -4,6 +4,15 @@
   <img src="assets/logo.png" alt="Gambit" width="800">
 </p>
 
+<p align="center">
+  <a href="https://github.com/felipecabargas/gambit/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="License: MIT"></a>
+  <a href="https://github.com/felipecabargas/gambit/releases"><img src="https://img.shields.io/github/v/release/felipecabargas/gambit" alt="Latest Release"></a>
+  <img src="https://img.shields.io/github/stars/felipecabargas/gambit?style=social" alt="GitHub Stars">
+  <img src="https://img.shields.io/badge/Claude_Code-plugin-orange" alt="Claude Code Plugin">
+  <img src="https://img.shields.io/badge/Antigravity_CLI-supported-blueviolet" alt="Antigravity CLI">
+  <img src="https://img.shields.io/badge/OpenCode-supported-steelblue" alt="OpenCode">
+</p>
+
 A collection of skills and chained workflow agents designed to streamline product management workflows, from research synthesis to feature specification, strategic planning, and stakeholder communication.
 
 ## Quick Start
