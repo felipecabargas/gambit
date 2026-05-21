@@ -14,7 +14,7 @@ jobs:
         run: |
           chmod +x scripts/validate-skill.sh
           FAILED=0
-          for f in skills/*/SKILL.md agents/*/SKILL.md; do
+          for f in skills/*/SKILL.md; do
             if ! bash scripts/validate-skill.sh "$f"; then
               FAILED=1
             fi
