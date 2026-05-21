@@ -151,7 +151,7 @@ The skill saves a Markdown file named `sprint-review-[sprint-name].md` with seve
 
 ## How to Trigger
 
-Ask Claude to write a sprint review by saying things like:
+Ask your assistant to write a sprint review by saying things like:
 
 - "Write my sprint review for Sprint 42 — here are the completed tickets: [paste list]"
 - "Generate a sprint recap from these JIRA tickets"
@@ -161,4 +161,4 @@ Ask Claude to write a sprint review by saying things like:
 - "Turn these closed issues into a sprint review"
 - "Write a sprint summary — I'll paste the list"
 
-Claude will automatically invoke this skill, infer any missing context (sprint goal, team name, groupings), and save a stakeholder-ready report.
+This skill will automatically, infer any missing context (sprint goal, team name, groupings), and save a stakeholder-ready report.

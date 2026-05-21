@@ -288,7 +288,7 @@ JTBD 2: "When a workflow falls behind, I want to share a status update with my d
 
 ## How to Trigger
 
-Ask Claude to build user personas by saying things like:
+Ask your assistant to build user personas by saying things like:
 
 - "Build a persona from this research synthesis"
 - "Create user personas from these interview notes"
@@ -297,4 +297,4 @@ Ask Claude to build user personas by saying things like:
 - "Make a persona for the ops manager segment"
 - "Turn this synthesised research into personas we can use for the design brief"
 
-Claude will automatically invoke this skill, run the four-step process, and save each persona as a structured markdown file in the `personas/` directory of your project.
+This skill will automatically, run the four-step process, and save each persona as a structured markdown file in the `personas/` directory of your project.

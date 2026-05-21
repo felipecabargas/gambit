@@ -216,7 +216,7 @@ The stakeholder update has a specific voice that differs from other PM documents
 
 ## How to Trigger
 
-Ask Claude to write a stakeholder update by saying things like:
+Ask your assistant to write a stakeholder update by saying things like:
 
 - "Write a stakeholder update for leadership based on this sprint"
 - "Draft my weekly PM update for this week"
@@ -225,4 +225,4 @@ Ask Claude to write a stakeholder update by saying things like:
 - "Write my monthly PM report based on our OKR progress"
 - "I just finished the sprint review — now write the stakeholder update"
 
-Claude will automatically invoke this skill, run the four-step process, and save the result as `stakeholder-update-[date].md` in your project directory.
+This skill will automatically, run the four-step process, and save the result as `stakeholder-update-[date].md` in your project directory.

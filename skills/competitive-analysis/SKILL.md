@@ -265,7 +265,7 @@ These rules ensure the analysis is honest, actionable, and useful for strategy d
 
 ## How to Trigger
 
-Ask Claude to run a competitive analysis by saying things like:
+Ask your assistant to run a competitive analysis by saying things like:
 
 - "Do a competitive analysis of the documentation tools market — our competitors are Notion, Confluence, and Coda"
 - "Who are our competitors and how do we stack up against them?"
@@ -274,4 +274,4 @@ Ask Claude to run a competitive analysis by saying things like:
 - "Where is there whitespace in the project management market?"
 - "How do we stack up against Linear and Jira for developer teams?"
 
-Claude will automatically invoke this skill, run the three-phase analysis, and save the results as `COMPETITIVE-ANALYSIS.md` in your project directory.
+This skill will automatically, run the three-phase analysis, and save the results as `COMPETITIVE-ANALYSIS.md` in your project directory.

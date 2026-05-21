@@ -226,7 +226,7 @@ If the output exceeds 2 pages, the skill will flag this and recommend either sco
 
 ## How to Trigger
 
-Ask Claude to write a technical brief by saying things like:
+Ask your assistant to write a technical brief by saying things like:
 
 - "Write a technical brief for this feature request"
 - "Help me hand this off to engineering"
@@ -235,4 +235,4 @@ Ask Claude to write a technical brief by saying things like:
 - "Make this feature request ready for the engineering team"
 - "I've finished writing the FR — now write the technical brief"
 
-Claude will automatically invoke this skill, run the five-step process, and save the result as a `technical-brief-[slug].md` file in your project directory.
+This skill will automatically, run the five-step process, and save the result as a `technical-brief-[slug].md` file in your project directory.

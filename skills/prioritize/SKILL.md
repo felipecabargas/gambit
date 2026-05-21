@@ -178,7 +178,7 @@ If the user supplies their own scoring dimensions (e.g. "score by strategic valu
 
 ## How to Trigger
 
-Ask Claude to rank features or initiatives by saying things like:
+Ask your assistant to rank features or initiatives by saying things like:
 
 - "Rank these features by RICE score against our current strategy"
 - "Help me prioritize what to build next — here's the list: [paste list]"
@@ -189,4 +189,4 @@ Ask Claude to rank features or initiatives by saying things like:
 - "We need to decide what to cut — rank these by effort and impact"
 - "Help me rank these using Agentic RICE — our team is delegating to AI agents"
 
-Claude will automatically invoke this skill, scan for existing strategy and OKR documents to ground the scoring, and return a saved prioritization file with full rationale.
+This skill will automatically, scan for existing strategy and OKR documents to ground the scoring, and return a saved prioritization file with full rationale.
