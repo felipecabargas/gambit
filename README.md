@@ -59,16 +59,16 @@ From within Claude Code, run:
 
 Skills are immediately available as both model-invoked skills and slash commands (`/gambit:sprint-review`, `/gambit:verify-acceptance-criteria`, etc.).
 
-### Gemini CLI
+### Antigravity CLI
 
 ```bash
-gemini extensions install https://github.com/felipecabargas/gambit
+agy extensions install https://github.com/felipecabargas/gambit
 ```
 
 Update later:
 
 ```bash
-gemini extensions update gambit
+agy extensions update gambit
 ```
 
 ### OpenCode
