@@ -244,9 +244,8 @@ Reviewers may request changes. We'll work with you iteratively to get it right.
 ## Recognition
 
 Contributors are recognized in:
-1. The CONTRIBUTORS file
-2. Commit history
-3. Skill documentation (if contributing a skill)
-4. Release notes for major contributions
+1. Commit history
+2. Skill documentation (if contributing a skill)
+3. Release notes for major contributions
 
 Thank you for helping make product management better!

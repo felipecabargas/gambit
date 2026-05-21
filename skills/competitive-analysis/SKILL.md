@@ -8,10 +8,10 @@ description: |
   cycle. Trigger on: "do a competitive analysis", "who are our competitors", "compare us to X
   and Y", "what's the competitive landscape for [space]", "where is there whitespace in the
   market", "how do we stack up against [competitor]".
-compatibility: "Requires filesystem access to project directory."
-version: 1.0.0
+compatibility: "Requires filesystem access to project directory. WebFetch is used to research competitor websites and pricing pages — analysis quality degrades without it."
+version: 1.1.0
 argument-hint: "[list competitors and your product context]"
-allowed-tools: [Read, Write, Bash]
+allowed-tools: [Read, Write, Bash, WebFetch]
 ---
 
 # Competitive Analysis
@@ -98,17 +98,32 @@ Before analysing competitors, the skill confirms which dimensions matter most fo
 
 If the user provides evaluation dimensions, those replace or extend the defaults. The analysis always evaluates every competitor on the same dimensions so the comparison matrix is valid.
 
+## Step 1.5: Web Research (Automatic)
+
+Before building profiles, fetch live data for each competitor. For each competitor name provided:
+
+1. **Homepage**: Fetch `https://[competitor-domain]/` to capture current positioning statement, tagline, and stated target audience.
+2. **Pricing page**: Attempt `https://[competitor-domain]/pricing` — if the URL 404s, try `/plans` or `/pricing/`. Extract tier names, price points, and any notable constraints (seat limits, feature gates).
+3. **G2 or Capterra listing** (optional, if dimensions include Weaknesses or UX): Fetch the first relevant search result URL if the user provides it, or skip if not available.
+
+For each fetch:
+- Record what was retrieved and mark it as **Public** confidence.
+- Note any information gaps where the page was unavailable or uninformative — these become **Assumed** ratings.
+- Do not ask the user to provide information that was successfully retrieved from the web.
+
+If a competitor has no public website (internal tools, unlaunched products), skip web research for that player and note the limitation in its profile.
+
 ## Step 2: Analysis
 
-For each competitor listed, the skill builds a structured profile.
+For each competitor listed, the skill builds a structured profile using the web research from Step 1.5 combined with any additional context the user provides.
 
 ### Competitor Profile
 
 Each profile covers:
 
-- **Positioning statement** — how the competitor describes itself, who it claims to serve, and what it leads with in its messaging
+- **Positioning statement** — how the competitor describes itself, who it claims to serve, and what it leads with in its messaging (sourced from homepage where available)
 - **Target user and buyer** — the primary user role (e.g. "developer", "ops manager") and the economic buyer (e.g. "CTO", "VP Engineering") based on public information and product design
-- **Business model** — revenue model, pricing tiers, and any notable go-to-market characteristics (PLG, sales-led, channel)
+- **Business model** — revenue model, pricing tiers, and any notable go-to-market characteristics (PLG, sales-led, channel), sourced from the pricing page where available
 
 ### Capability Assessment
 
