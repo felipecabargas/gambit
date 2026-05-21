@@ -1,0 +1,28 @@
+{
+  "name": "gambit",
+  "displayName": "Gambit",
+  "description": "Collection of Product management skills and chained workflow agents for PM workflows",
+  "version": "2.4.0",
+  "contextFileName": "GEMINI.md",
+  "author": {
+    "name": "A. Felipe Cabargas",
+    "email": "felipe.cabargas@gmail.com",
+    "url": "https://www.cabargas.com"
+  },
+  "repository": "https://github.com/felipecabargas/gambit",
+  "license": "MIT",
+  "keywords": [
+    "product management",
+    "workflow agents",
+    "product management skills",
+    "product management agents",
+    "product management workflows",
+    "product management tools",
+    "product management automation",
+    "product management processes",
+    "product management best practices",
+    "product management techniques",
+    "product management strategies",
+    "product management methodologies",
+    "product management frameworks"]
+}
