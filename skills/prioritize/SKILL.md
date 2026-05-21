@@ -97,7 +97,7 @@ Derive a touchpoint count from the answers. If all four are clean, Agentic Effor
 - Scope isolation and verifiability: ask the user — these require codebase knowledge the skill doesn't have.
 - Default to Agentic Effort = 1 if uncertain.
 
-## Step 3: Output
+## Output Format
 
 Save the result as `prioritization-[YYYY-MM-DD].md` in the current directory. Present the ranked table inline and confirm the file was saved.
 
@@ -175,3 +175,18 @@ If the user supplies their own scoring dimensions (e.g. "score by strategic valu
 - **Don't average away disagreement.** If Reach is highly uncertain, keep Confidence low rather than picking a middle-ground Reach number.
 - **One framework per session.** Don't mix RICE and MoSCoW. If the user changes their mind mid-session, start a new ranking.
 - **Agentic Effort is not a quality judgment.** A high touchpoint count means the ticket isn't ready for autonomous execution yet — not that it's unimportant. Separate the prioritization decision from the delegation decision.
+
+## How to Trigger
+
+Ask Claude to rank features or initiatives by saying things like:
+
+- "Rank these features by RICE score against our current strategy"
+- "Help me prioritize what to build next — here's the list: [paste list]"
+- "Score and rank these initiatives using ICE"
+- "What should we build this quarter? Here are the candidates"
+- "Prioritize this backlog for me using MoSCoW"
+- "Which of these has the best RICE score given our OKRs?"
+- "We need to decide what to cut — rank these by effort and impact"
+- "Help me rank these using Agentic RICE — our team is delegating to AI agents"
+
+Claude will automatically invoke this skill, scan for existing strategy and OKR documents to ground the scoring, and return a saved prioritization file with full rationale.
