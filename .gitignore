@@ -40,6 +40,9 @@ build/
 
 # Git worktrees
 .worktrees/
+.claude/worktrees/
 
 # Internal planning docs (kept local only)
 docs/superpowers/
+
+.antigravitycli/
